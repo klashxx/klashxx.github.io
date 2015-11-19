@@ -2,6 +2,7 @@
 layout: post
 title: Python Date format validator
 permalink: python-date-validator
+comments: true
 ---
 
 

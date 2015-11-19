@@ -2,6 +2,7 @@
 layout: post
 title: PLAIN TEXT the language of *NIX
 permalink: plain-text-language-of-nix
+comments: true
 ---
 
 Let's face it, one of the main task of the IT administrator could possibly be text processing.

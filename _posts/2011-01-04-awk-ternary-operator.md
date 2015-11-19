@@ -2,6 +2,7 @@
 layout: post
 title: Use of the ternary operator, an awk example.
 permalink: ternary-operator
+comments: true
 ---
 
 Use of the ternary operator, an `awk` example.

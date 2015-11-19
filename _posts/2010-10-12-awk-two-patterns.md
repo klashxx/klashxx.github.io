@@ -2,6 +2,7 @@
 layout: post
 title: Print lines between two patterns , the awk way ...
 permalink: awk-between-two-patterns
+comments: true
 ---
 
 Example input file:
