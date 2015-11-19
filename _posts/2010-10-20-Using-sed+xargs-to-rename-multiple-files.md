@@ -2,6 +2,7 @@
 layout: post
 title: Using sed + xargs to rename multiple files
 permalink: sed-xargs-to-rename
+comments: true
 ---
 
 

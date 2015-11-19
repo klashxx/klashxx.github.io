@@ -2,6 +2,7 @@
 layout: post
 title: Text processing performance,... Perl vs sed
 permalink: perl-vs-sed
+comments: true
 ---
 
 Here's the situation:

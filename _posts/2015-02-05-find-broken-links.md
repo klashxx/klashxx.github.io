@@ -2,6 +2,7 @@
 layout: post
 title: Where is my Broken Link
 permalink: check-broken-links
+comments: true
 ---
 
 This task *bugs* me quite often, there many methods to perform this job but want to share the options I consider **safer**.

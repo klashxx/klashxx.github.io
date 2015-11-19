@@ -3,11 +3,12 @@
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
 relative_permalinks: true
+highlighter:         true
 
 # Setup
 title:               klashxx
 tagline:             nixtip nonsense
-url:                 http://getpoole.com
+url:                 http://klashxx.github.io/
 paginate:            1
 baseurl:             ""
 
@@ -27,7 +28,7 @@ author:
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/klashxx
+  repo:              github.com/klashxx/klashxx.github.io
 
 pages_list:
   About: '/about'
