@@ -1,5 +1,7 @@
-# Permalinks
-#
+
+gems:
+  - jekyll-paginate
+
 paginate: 5
 paginate_path: "page:num"
 
@@ -10,8 +12,7 @@ url:                 http://klashxx.github.io/
 paginate:            1
 baseurl:             ""
 
-gems :
-  - jekyll-paginate
+
 
 
 # Assets
