@@ -1,7 +1,5 @@
 # Permalinks
 #
-permalink:           pretty
-gems: [jekyll-paginate]
 paginate: 5
 paginate_path: "page:num"
 
@@ -11,6 +9,10 @@ tagline:             nixtip nonsense
 url:                 http://klashxx.github.io/
 paginate:            1
 baseurl:             ""
+
+gems :
+  - jekyll-paginate
+
 
 # Assets
 #
