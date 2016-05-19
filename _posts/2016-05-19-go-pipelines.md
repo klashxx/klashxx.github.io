@@ -1,13 +1,11 @@
 ---
 layout: post
-title: Go Pipelines
+title: Pipelines en Go
 permalink: go-pipelines
 comments: true
 ---
 
-# Pipelines en Go
-
-*Traducción libre de [Go Concurrency Pipelines](https://blog.golang.org/pipelines)*
+*Traducción libre al español de post original [Go Concurrency Pipelines](https://blog.golang.org/pipelines)*
 
 
 Un `pipeline` se podría definir como una serie de etapas de proceso conectadas por `channels` (*canales*).
