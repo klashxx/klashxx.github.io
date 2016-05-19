@@ -11,8 +11,11 @@ comments: true
 Un `pipeline` se podría definir como una serie de etapas de proceso conectadas por `channels` (*canales*).
 
 Cada una de estas fases está conformada por un grupo de **goroutines** ejecutando una misma función:
--   **Reciben** valores a partir de los canales *inbound* o de entrada
--   **Ejecutan** algún tipo de *manipulación* sobre esos datos
+
+-   **Reciben** valores a partir de los canales *inbound* o de entrada.
+
+-   **Ejecutan** algún tipo de *manipulación* sobre esos datos.
+
 -   **Devuelven** los valores a través de los canales de salida o *outbound*.
 
 Las etapas están conectadas a través de un número arbitrario de canales de *entrada* y *salida*, excepto la primera y última que solo tendrán de salida y entrada respectivamente.
