@@ -5,6 +5,8 @@ permalink: ternary-operator
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2011/04/01/use-of-the-conditional-operator-an-awk-example/)*
+
 Use of the ternary operator, an `awk` example.
 
 Ok, suppose this source file:

@@ -5,6 +5,8 @@ permalink: check-broken-links
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2015/02/05/broken-links-checking/)*
+
 This task *bugs* me quite often, there many methods to perform this job but want to share the options I consider **safer**.
 
 Having this scenario:
