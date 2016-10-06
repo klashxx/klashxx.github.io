@@ -12,6 +12,4 @@ You can reach me on:
 
 Thanks for reading!
 
-<center><h6 align="center">
-*Made with :heart: in Almería, Spain.*
-</h6></center>
+*Made with :heart: in Almería, Spain.* {: style="color:gray; font-size: 80%; text-align: center;"}
