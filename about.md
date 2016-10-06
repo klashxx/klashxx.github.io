@@ -12,8 +12,5 @@ You can reach me on:
 
 Thanks for reading!
 
-{::options parse_block_html="true" /}
-<center>
+
 Made with :heart: in Almería, Spain.
-</center>
-{::options parse_block_html="false" /}
