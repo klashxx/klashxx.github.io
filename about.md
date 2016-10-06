@@ -13,5 +13,5 @@ You can reach me on:
 Thanks for reading!
 
 <center><h6 align="center">
-*Made with* :heart: *in* [*Almería*](https://www.google.com/search?q=almeria&espv=2&biw=1217&bih=585&sa=X#tbm=isch&q=almeria+movies)*, Spain.*
+*Made with* :heart: *in Almería, Spain.*
 </h6></center>
