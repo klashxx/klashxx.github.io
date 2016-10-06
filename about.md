@@ -13,4 +13,9 @@ You can reach me on:
 Thanks for reading!
 
 
+{::options parse_block_html="true" /}
+<center><h6 align="center">
 Made with :heart: in Almería, Spain.
+</h6></center>
+{::options parse_block_html="false" /}
+
