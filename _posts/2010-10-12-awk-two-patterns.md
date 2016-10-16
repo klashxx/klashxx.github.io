@@ -5,6 +5,8 @@ permalink: awk-between-two-patterns
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2010/10/12/print-lines-between-two-patterns-the-awk-way/)*
+
 Example input file:
 
 {% highlight text %}

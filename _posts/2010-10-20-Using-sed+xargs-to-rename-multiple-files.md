@@ -5,6 +5,7 @@ permalink: sed-xargs-to-rename
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2010/10/20/using-xargs-to-rename-multiple-files/)*
 
 Lets say that whe have a bunch of `txt` files and we need to rename to `sql`.
 

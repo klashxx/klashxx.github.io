@@ -10,7 +10,9 @@ You can reach me on:
 - [LinkedIn](https://linkedin.com/in/juandiegogodoy)
 - [Twitter](http://twitter.com/klashxx)
 
-Thanks for reading!
+Thanks for reading!   
+
 
 Made with :heart: in Almería, Spain
-{: style="text-align: center"}
+{: style="color:gray; font-size: 90%; text-align: center;"}
+

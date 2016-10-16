@@ -5,6 +5,7 @@ permalink: python-date-validator
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2013/11/12/300/)*
 
 **Simplicity** is always best and `Python` makes this task **insanely easy**.
 

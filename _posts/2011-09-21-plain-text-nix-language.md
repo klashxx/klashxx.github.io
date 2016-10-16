@@ -5,6 +5,8 @@ permalink: plain-text-language-of-nix
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2011/09/21/plain-text-the-language-of-nix/)*
+
 Let's face it, one of the main task of the IT administrator could possibly be text processing.
 
 Why? Because text is everywhere, computer systems speak text in three different languages `STDOUT`, `STDERR` and `STDIN`.

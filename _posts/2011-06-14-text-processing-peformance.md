@@ -5,6 +5,8 @@ permalink: perl-vs-sed
 comments: true
 ---
 
+*Post first published in [nixtip](https://nixtip.wordpress.com/2011/06/14/text-processing-performance-perl-vs-sed/)*
+
 Here's the situation:
 
 We have a large file to process, say `897872` lines (72 Mb), a small sample looks like this:

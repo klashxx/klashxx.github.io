@@ -54,6 +54,20 @@ img {
   border-radius: 5px;
 }
 
+img.emoji {
+    display: inline;
+    height: 1em;
+    width: 1em;
+    margin-bottom: 0.25em;
+}
+
+img.jemoji {
+    display: inline;
+    height: 1em;
+    width: 1em;
+    margin-bottom: 0.25em;
+}
+
 table {
   margin-bottom: 1rem;
   width: 100%;
