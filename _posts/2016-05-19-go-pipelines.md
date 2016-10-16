@@ -1,4 +1,9 @@
-# Pipelines en Go
+---
+layout: post
+title: Pipelines en Go
+permalink: pipelines-en-go
+comments: true
+---
 
 *Traducción libre de [Go Concurrency Pipelines](https://blog.golang.org/pipelines)*
 
