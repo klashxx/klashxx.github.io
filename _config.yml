@@ -7,6 +7,11 @@ paginate: 5
 paginate_path: "page:num"
 baseurl: ""
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+future: true
 
 gems:
   - jekyll-paginate
