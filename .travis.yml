@@ -10,7 +10,7 @@ install:
   - gem install jekyll-paginate
   - gem install html-proofer
   - gem install jemoji
-  - gem install listen
+  - gem install listen --version '3.0'
   - gem install github-pages
 script:
   - jekyll build
