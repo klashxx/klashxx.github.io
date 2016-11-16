@@ -2,6 +2,9 @@ language: ruby
 sudo: false
 rvm:
   - 2.2.5
+before_install:
+  - gem update --system
+  - gem --version
 install:
   - gem install jekyll
   - gem install jekyll-paginate
