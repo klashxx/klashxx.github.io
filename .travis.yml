@@ -7,6 +7,7 @@ install:
   - gem install jekyll-paginate
   - gem install html-proofer
   - gem install jemoji
+  - gem install github-pages
 script:
   - jekyll build
   #- htmlproof ./_site --only-4xx --check-html
