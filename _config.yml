@@ -16,6 +16,7 @@ future: true
 gems:
   - jekyll-paginate
   - jemoji
+  - jekyll-sitemap
 
 # Assets
 #
