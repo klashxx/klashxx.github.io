@@ -1,6 +1,6 @@
 ---
 layout: post
-title: awk, **power** para tu command line
+title: awk, power para tu command line
 permalink: awk-power-para-tu-cmd
 comments: true
 ---
@@ -8,12 +8,14 @@ comments: true
 ### Guía de uso de la navaja suiza de los *nix para principiantes
 
 <hr>
+English version [here][english].
+<hr>
 
 ## :warning: Disclaimer :warning:
 
 Este texto se refiere exclusivamente a la implementación **GNU** de `awk` conocida como `gawk` que es la usada mayoritariamente en cualquier distribución **Linux** actual.
 
-En su redacción la refencia fundamental ha sido [The GNU Awk User’s Guide][gnu-awk] y mis aportaciones a [Stackoverflow][so].
+En su redacción la referencia fundamental ha sido [The GNU Awk User’s Guide][gnu-awk] y mis aportaciones a [Stackoverflow][so].
 
 <hr>
 
@@ -26,15 +28,15 @@ En su redacción la refencia fundamental ha sido [The GNU Awk User’s Guide][gn
 
 `AWK` es un lenguaje de programación diseñado para procesamiento de texto, se usa normalmente como herramienta de extracción y reporting.
 
-Es un standard en prácticamente cualquier sitemas *nix.
+Es un standard en prácticamente cualquier sistema *nix.
 
 
 #### ``awk``award name ...
 
-El nombre del lenguaje se derviva del apellido de sus autores: Alfred **A**ho, Peter **W**einberger, y Brian **K**ernighan.
+El nombre del lenguaje se deriva del apellido de sus autores: Alfred **A**ho, Peter **W**einberger, y Brian **K**ernighan.
 
 
-### Asi que ``awk`` ...
+### Así que ``awk`` ...
 
 * Busca líneas que contengan determinados patrones en ficheros o en la entrada estándar.
 
@@ -56,12 +58,13 @@ pattern { action }
 
 #### ¿Cómo ejecutarlo?
 
-* Si el programa es **corto**:
+Si el programa es **corto**:
 
 ```` shell
 awk 'program' input-file1 input-file2
 ````
-**:warning: Nota:** presta atención a los posibles problemas con el *shell quoting*[^1].
+
+:warning: **Nota:** presta atención a los posibles problemas con el *shell quoting*[^1].
 
 ```` shell
 cmd | awk 'program'
@@ -69,7 +72,7 @@ cmd | awk 'program'
 
 El ``pipe`` redirige  la salida del comando a la izquierda `cmd` a la *entrada* del comando `awk`[^2].
 
-* Cuando el código es **largo**, normalmente es preferible usar un fichero como contendor y ejecutarlo de esta forma:
+Cuando el código es **largo**, normalmente es preferible usar un fichero como contendor y ejecutarlo de esta forma:
 
 ```` shell
 awk -f program-file input-file1 input-file2
@@ -78,7 +81,6 @@ cmd | awk -f program-file
 ````
 
 O a través de un interprete, a lo `shebang`.
-
 
 ```` shell
 #!/bin/awk -f
@@ -92,15 +94,13 @@ BEGIN { print "hello world!!" }
 
 `-v var=val` Pasa la variable `var` con valor `val` al `awk` antes de que la ejecución comience.
 
-*:point_right: Nota*: se puede usar multiples veces, para *setear* el número deseado de valores.
-
+*:point_right: Nota*: se puede usar múltiples veces, para *setear* el número deseado de valores.
 
 #### BEGIN y END
 
 Estas etiquetas marcan los bloques o patrones especiales que proporcionan un espacio para las acciones de *inicialización* y *limpieza*.
 
 Sigue el siguiente esquema:
-
 
 ```` shell
 BEGIN{
@@ -129,7 +129,6 @@ END
 
 #### Porque *grepear* si tenemos `awk`?
 
-
 ```` shell
 $ cat lorem.dat
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -152,7 +151,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ````
 
-**:warning: Nota:** Cuando no se proporciona una acción el comportamiento por defecto es volcar la línea o registro *macheado* al _**stdout**_.
+:warning: **Nota:** Cuando no se proporciona una acción el comportamiento por defecto es volcar la línea o registro *macheado* al _**stdout**_.
 
 Pero ... ¿como podríamos mostrar la *primera* y *ultima* palabra de cada línea?
 
@@ -192,24 +191,24 @@ Aliquam ultrices.
 
 ### ¿Mejor no :sunglasses:?  , Yeah but ... ¿Como funciona?
 
-
 Para averiguarlo es necesario conocer dos estructuras básicas en `awk` los _**Registros**_ (*Records*) y _**Campos**_ (*Fields*) en los que se dividen cualquier entrada al programa.
 
+<hr>
 
 #### Registros
 
-Los *registros* estan delimitados por un carácter o expresión regular que se conoce como *Record Separator* `RS`.
+Los *registros* están delimitados por un carácter o expresión regular que se conoce como *Record Separator* `RS`.
 
 Su valor **por defecto** es el salto de línea unix `\n`, por este motivo los registros por defecto equivalen a una línea individual.
 
 Adicionalmente disponemos de la variable `ORS`  *Output Record Separator* que nos va a permitir controlar la delimitación de estos registros al volcarlos sobre el *stdout*.
 
-
 Tanto el `RS` como el `ORS` deben estar *encomillados*, lo que indica que estamos ante constantes literales.
 
-Usar un carácter o `regex` distinto es tan simple como asignarselo a las variable `RS` u `ORS`:
+Usar un carácter o `regex` distinto es tan simple como asignárselo a las variable `RS` u `ORS`:
 
 - Generalmente, el mejor momento para hacerlo es al comienzo de la ejecución, en el `BEGIN`, antes de que comience el proceso de la entrada de modo que el primer registro se lea con el separador deseado.
+
 - La otra forma de cambiar el `RS` (o el `ORS`) es a través de la línea de comando mediante los mecanismos de asignación de variables.
 
 Ejemplos:
@@ -246,20 +245,17 @@ et facilisis neque ultrices.
 <<<---
 ````
 
-
 #### Campos
 
-Los registros `awk` se dividen de forma automatica en pedazos denominados *campos* (*fields*).
+Los registros `awk` se dividen de forma automática en pedazos denominados *campos* (*fields*).
 
-El separador se contiene en la variable `FS` (*Field Separator*) su valor **por defecto** entre *campos* **es el espacio blanco** que en `awk` se define como una cadena compuesta por uno o mas espacios, TABs o saltos de línea.
+El separador se contiene en la variable `FS` (*Field Separator*) su valor **por defecto** entre *campos* **es el espacio blanco** que en `awk` se define como una cadena compuesta por uno o mas *espacios*, *TABs* o *saltos de línea*.
 
 Nos referimos a un *campo* en `awk` mediante el símbolo dólar `$` seguido por el número del campo que deseamos tratar.
 
 De esta forma `$1` se referirá al primer campo, `$2` al segundo y así sucesivamente.
 
-
 **IMPORTANTE**: `$0` hace referencia al *registro completo*.
-
 
 ```` shell
 $ awk '{print $3}' lorem.dat
@@ -271,12 +267,9 @@ dolor
 mauris
 ````
 
-
-
-
 `NF` es una variable *predefinida* que devuelve el *número de campos* de el registro actual.
 
-En la práctica esto trae como consecuencia que `$NF` siempre apuntara al último campo de un registro.
+En la práctica esto trae como consecuencia que `$NF` siempre apuntará al último campo de un registro.
 
 ```` shell
 $ awk '{print NF, $NF}' lorem.dat
@@ -287,7 +280,6 @@ $ awk '{print NF, $NF}' lorem.dat
 8 elit.
 10 ultrices.
 ````
-
 
 Del mismo modo que existe un `ORS` también disponemos de un `OFS` (*Output Field Separator*) para controlar la forma en que delimitaremos los campos al mandarlos al *output stream*.
 
@@ -302,7 +294,6 @@ sys:*:3:root
 tty:*:4:root
 ````
 
-
 ```` shell
 $ awk '!/^(_|#)/&&$1=$1' FS=":" OFS="<->" /etc/group
 nobody<->*<->-2<->
@@ -314,7 +305,7 @@ sys<->*<->3<->root
 tty<->*<->4<->root
 ````
 
-**:warning: Note**: ¿¿Y ese?? ... `$1=$1`[^3]
+:warning: **Nota**: ¿¿Y ese?? ... `$1=$1`[^3]
 
 <hr>
 
@@ -329,7 +320,6 @@ Curabitur tellus.
 Lorem elit.
 Aliquam ultrices.
 ````
-
 
 #### NR y FNR
 
@@ -359,6 +349,7 @@ $ awk '{print NR,FNR,$0}' n1.dat n2.dat
 4 2 four
 ````
 
+<hr>
 
 #### Mejorando la salida
 
@@ -367,7 +358,6 @@ Para conseguir una salida más adecuada podemos usar `printf`:
 `printf format, item1, item2, …`
 
 La mascara de formato es muy similar a la del ISO C.
-
 
 ```` shell
 $ awk '{printf "%20s <-> %s\n",$1,$NF}' lorem.dat
@@ -379,7 +369,6 @@ $ awk '{printf "%20s <-> %s\n",$1,$NF}' lorem.dat
              Aliquam <-> ultrices.
 ````
 
-
 #### Redirigiendo el Output
 
 La salida de `print` y  `printf` se dirige por defecto al `stdout` pero podemos redireccionarla de diferentes modos.
@@ -388,7 +377,13 @@ Estas redirecciones en `awk` se escriben de forma similar a como se hacen en los
 
 ```` shell
 $ awk 'BEGIN{print "hello">"hello.dat"}'
+````
+
+```` shell
 $ awk 'BEGIN{print "world!">>"hello.dat"}'
+````
+
+```` shell
 $ cat hello.dat
 hello
 world!
@@ -409,7 +404,6 @@ Podemos apuntar estas redirecciones a los *streams* estándar:
 
 - `/dev/stder`: La salida de error estándar (descriptor 2).
 
-
 Un ejemplo de como escribir mensajes de error sería:
 
 ```` shell
@@ -417,14 +411,13 @@ $ awk 'BEGIN{print "Serious error detected!" > "/dev/stderr"}'
 Serious error detected!
 ````
 
+<hr>
 
 #### Trabajando con Arrays
 
-En `awk` los  *arrays* son **asociativos** lo que en la practica se traduce en que cada array es una collección de parejas índice - valor , siendo el índice cualquier valor numérico o cadena de texto, donde el orden es irrelevante.
-
+En `awk` los  *arrays* son **asociativos** lo que en la practica se traduce en que cada array es una colección de parejas índice - valor , siendo el índice cualquier valor numérico o cadena de texto, donde el orden es irrelevante.
 
 No necesitan de declaración previa y se pueden añadir nuevos valores en cualquier momento.
-
 
 Índice | Valor
 -------|---------
@@ -434,7 +427,6 @@ No necesitan de declaración previa y se pueden añadir nuevos valores en cualqu
 1  | "one"
 2  | "two"
 
-
 Para referirnos a un array usaremos la sintaxis:
 
 `array[index-expression]`
@@ -443,11 +435,9 @@ Si queremos asignarle valores:
 
 `array[index-expression] = value`
 
-
 Para determinar si un índice está presente:
 
 `indx in array`
-
 
 Para recorrer los elementos del *array*:
 
@@ -458,8 +448,6 @@ for (var in array) {
 ````
 
 Si hemos usado valores numéricos podemos recuperar los elementos preservando el orden:
-º 111111111111111111
-+-++
 
 ```` shell
 for (i = 1; i <= max_index; i++) {
@@ -469,8 +457,7 @@ for (i = 1; i <= max_index; i++) {
 
 O usar algo más avanzado (exclusivo de `gawk`) como `@ind_str_asc`.
 
-
-Por ejemplo ,partiendo de:
+Por ejemplo, partiendo de:
 
 ```` shell
 $ cat dict.dat
@@ -479,7 +466,6 @@ dos two
 tres three
 cuatro four
 ````
-
 
 ```` shell
 awk '{dict[$1]=$2}
@@ -503,7 +489,6 @@ dos -> two
 tres -> three
 cuatro -> four
 ````
-
 
 Podemos ver como mantiene el orden original:
 
@@ -532,7 +517,6 @@ awk 'BEGIN{
 
 La ordenación podemos controlarla mediante va variable `PROCINFO`:
 
-
 ```` shell
 awk 'BEGIN{
       PROCINFO["sorted_in"] = "@ind_num_asc"
@@ -557,8 +541,9 @@ awk 'BEGIN{
 4 four
 ````
 
-### Funciones Build-in
+<hr>
 
+### Funciones Build-in
 
 `gensub(regexp, replacement, how [, target])` : Es la función más avanzada de substitución de texto.
 
@@ -584,7 +569,6 @@ Aliquam interdum mauris volutpat nisl placerat, et facilisis.
 
 Supongamos que deseamos *invertir* la posición de las palabras que se encuentran a un lado y otro de las comas.
 
-
 ```` shell
 $ awk '{print gensub(/([^ ]+)( *, *)([^ ]+)/,
                      "\\3\\2\\1", "g")}' lorem.dat
@@ -597,7 +581,6 @@ Aliquam interdum mauris volutpat nisl et, placerat facilisis.
 ````
 
 Mediante `gensub` usamos *grupos* para realizar tres *capturas* he invertir los resultados.
-
 
 Una acción más simple sería la substitución de *puntos* por *comas*:
 
@@ -664,7 +647,7 @@ $ awk 'n=split($0, a, ":"){print n, a[n]}' passwd
 7 /bin/rbash
 7 /bin/rbash
 ````
-**:point_right: Nota**: Esto se podria hacer de otra forma mucho más simple.
+:point_right: **Nota**: Esto se podría hacer de otra forma mucho más simple.
 
 ```` shell
 $ awk '{print NF,$NF}' FS=':' passwd
@@ -675,10 +658,11 @@ $ awk '{print NF,$NF}' FS=':' passwd
 7 /bin/rbash
 ````
 
+<hr>
+
 ### Funciones propias
 
 Escribir funciones *custom* es muy simple tal y como se puede apreciar en el siguiente ejemplo:
-
 
 ```` shell
 awk 'function test(m)
@@ -696,7 +680,6 @@ This is a test func, parameter: param
 
 Análogamente podríamos devolver un valor mediante `return`:
 
-
 ```` shell
 awk 'function test(m)
      {
@@ -705,12 +688,9 @@ awk 'function test(m)
      BEGIN{print test("param")}'
 ````
 
-
-La única forma de que una variable sea local en una funcion una función es en la recogida de parámetros.
-
+La única forma de que una variable sea local en una función es en la recogida de parámetros.
 
 Los parámetros escalares se pasan por valor y los arrays por referencia así que cualquier cambio que se haga en el array en la función se reflejara en el cuerpo del programa:
-
 
 ```` shell
  awk 'function test(m)
@@ -724,16 +704,15 @@ Los parámetros escalares se pasan por valor y los arrays por referencia así qu
       END{print m[0]}'
 ````
 
-Volacará al `stdout`:
-`new`
+Volcará al `stdout`:
 
-
-
+```` shell
+new
+````
 
 <hr>
 
 # Ahora empecemos con lo divertido :godmode:
-
 
 Trataremos de resolver una serie de ejercicios que pondrán a prueba los conocimientos adquiridos:
 
@@ -795,7 +774,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Aliquam interdum mauris volutpat nisl placerat, et facilisis.
 ````
 
-
 ```` shell
 $ awk '{print $(NF-1)}' lorem.dat
 adipiscing
@@ -807,6 +785,8 @@ neque
 ````
 
 No hay mucho que explicar `NF` indica el número de campos presente en el registro , luego `(NF-1)` apuntara al campo anterior al último y `$(NF-1)` a su correspondiente valor.
+
+<hr>
 
 ### 02. Substituir un registro
 
@@ -838,6 +818,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Aliquam interdum mauris volutpat nisl placerat, et facilisis.
 ````
 
+<hr>
+
 ### 03. Colocar un punto y coma al final de cada registro
 
 ```` shell
@@ -852,7 +834,9 @@ Aliquam interdum mauris volutpat nisl placerat, et facilisis neque ultrices.;
 
 La solución es simple, como conocemos que el `RS` por  defecto es el salto de línea basta con que al de salida `OFS` le  antepongamos el punto y coma `;\n`
 
-**:warning: ATENCION**: ¿Que hace ese `1`?[^4]
+:warning: **ATENCIÓN**: ¿Que hace ese `1`?[^4]
+
+<hr>
 
 ### 04. ¿Y una coma entre cada palabra?
 
@@ -870,6 +854,8 @@ Los más notable de este código es como se fuerza que `awk` reconstruya el *reg
 
 Para hacerlo usamos esta asignación inocua: `$1 = $1`
 
+<hr>
+
 ### 05. ¿Todo junto?
 
 ```` shell
@@ -883,6 +869,8 @@ Aliquam,interdum,mauris,volutpat,nisl,placerat,,et,facilisis,neque,ultrices.;
 ````
 
 Tan simple como jugar con las dos variables de salida `OFS` y `ORS`.
+
+<hr>
 
 ### 06. Incluir los registros impares en un archivo y los pares en otro
 
@@ -906,7 +894,7 @@ Nunc enim orci, euismod id nisi eget, interdum cursus ex.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ````
 
-El símbolo `%` es la función modulo que extrae el resto al dividir el número de registro o línea tradado entre 2:
+El símbolo `%` es la función modulo que extrae el resto al dividir el número de registro o línea tratado entre 2:
 
 ```` shell
 $ awk '{print NR%2}' lorem.dat
@@ -923,8 +911,11 @@ Como sabemos en `awk` `1` es [verdadero] y `0` *falso*, en base a esta premisa r
 Hay que prestar **especial atención** al comando **`next`** que fuerza que `awk` deje de forma inmediata de procesar ese registro y pase al siguiente. De esta forma evitamos un doble control de condición que sin **`next`** se hubiera escrito así:
 
 ```` shell
-awk 'NR%2{print >"impar.dat"}!NR%2{print >"par.dat"}' lorem.dat
+awk  'NR % 2{print > "impar.dat"}
+     !NR % 2{print > "par.dat"}' lorem.dat
 ````
+
+<hr>
 
 ### 07. Dado un fichero de password informa el campo del home del usuario en base al login
 
@@ -954,6 +945,7 @@ En segundo lugar identificamos la posición en la que se encuentra el campo `voi
 
 **IMPORTANTE**: No necesitamos `print` ya que el resultado de la asignación será `true` y el comportamiento por defecto de `awk` cuando algo es *verdadero* es mostrar el registro afectado.
 
+<hr>
 
 ### 08. Cambiar el orden de los campos de modo que el primero pase a ser el final
 
@@ -970,6 +962,7 @@ $ awk -F\: '{last=$1;$1=$NF;$NF=last}1' FS=":" OFS=':' /etc/passwd
 
 Aquí jugamos con la variable intermedia `last` donde alojamos el valor del primer campo `$1`, después intercambiamos su valor con el del último campo `$1=$NF`,  y finalmente asignamos `last` a `$NF`.
 
+<hr>
 
 ### 09. Hackeando traceroute
 
@@ -1001,9 +994,11 @@ La acción se ejecuta para todos los registros ya que no hay ningún tipo de *fi
 
 En la regla `END` mostramos el valor final.
 
+<hr>
+
 ### 10. Procesos dependientes de un PID padre
 
-En primer lugar obtenemos el `PID` de nuestra *shell*
+En primer lugar obtenemos el `PID` de nuestra *shell*:
 
 ```` shell
 $ echo $$
@@ -1039,10 +1034,11 @@ $ ps -ef|awk '$3==51026 && /slee[p]/ {print $2" -> "$5}'
 86753 -> 7:57PM
 ````
 
-Para ello necesitamos añadir al la condición inicial mediante `&&` la busqueda del patron `/slee[p]/` en el registro. 
+Para ello necesitamos añadir al la condición inicial mediante `&&` la búsqueda del patrón `/slee[p]/` en el registro. 
 
 La acción asociada será imprimir el segundo campo que corresponde al `PID` del proceso y el quinto asociado al *timestamp*.
 
+<hr>
 
 ### 11. Como agregar datos a partir de una clave
 
@@ -1078,11 +1074,10 @@ Es importante tener en cuenta que `awk ` cuando no encuentra una *key* en un *ar
 
 En la parte del `END` simplemente recorremos el array mostrando sus índices o keys y el valor contenido.
 
-
 Este código se podría escribir de esta forma preservando el orden y omitiendo el uso de arrays aprovechando que las `ip`s están ordenadas:
 
 ```` shell
-awk 'NR==1{next}
+awk 'NR == 1{next}
     lip && lip != $1{print lip,sum;sum=0}
     {sum+=$2;lip=$1}
     END{print lip,sum}' ips.dat
@@ -1091,16 +1086,17 @@ awk 'NR==1{next}
 81.227.128.93 84700
 ````
 
-`NR==1{next}`: Omite la cabecera.
+`NR == 1{next}`: Omite la cabecera.
 
 `lip != $1 && lip != ""{print lip,sum;sum=0}`: Usamos `lip` (last ip) como variable auxiliar y solo en el caso de que esta no sea nula `lip` y `&&` sea distinta del la *ip* actual `lip != $1` mostraremos la ip anterior `lip` y la sumatoria `sum` para después inicializarla: `sum=0`.
 
 `{sum+=$2;lip=$1}`: Aquí llevamos a cabo el incremento de la sumatoria de *bytes* `sum+=$2` y asignamos el campo de ip actual a `lip`.
 
-En el bloque  `END` mostraremos los resultados para la última `ip` asi como la sumatoria final.
+En el bloque `END` mostraremos los resultados para la última `ip` así como la sumatoria final.
 
 Este código preserva el orden pero aumenta la complejidad del programa.
 
+<hr>
 
 ### 12. Mostrar los registros entre dos patrones
 
@@ -1137,7 +1133,7 @@ page 66
 
 Como podemos ver como su funcionamiento se basa en asociar un valor para `flag` *verdadero* al encontrar el *patrón* de inicio y *falso* al encontrar el que cierra.
 
-Para evitar un paso adicional es importante el orden de las acciones, si lo hacemos siguendo la secuencia lógica:
+Para evitar un paso adicional es importante el orden de las acciones, si lo hacemos siguiendo la secuencia lógica:
 
 ```` shell
 $ awk '/OUTPUT/{flag=1}flag;/END/{flag=0}' pat.dat
@@ -1150,15 +1146,15 @@ page 66
 END
 ````
 
-Las *etiquetas* se muestran en la salida ya que después de encontrar el patrón de inicio `OUTPUT` activamos el *flag* y la siguiente acción se realiza sobre el mismo registro, cosa que evitamos si esta activación la realizamos en el último paso de nuestro flujo. Debemos evitar que `flag` sea `verdadero` cuando no deseemos mostrar los registro.
+Las *etiquetas* se muestran en la salida ya que después de encontrar el patrón de inicio `OUTPUT` activamos el *flag* y la siguiente acción se realiza sobre el mismo registro, cosa que evitamos si esta activación la realizamos en el último paso de nuestro flujo.
 
+Debemos evitar que `flag` sea `verdadero` cuando no deseemos mostrar los registro.
 
-[13](#convertir-un-campo-en-base-a-su-contenido)
+<hr>
 
 ### 13. Convertir un campo en base a su contenido
 
 Supongamos este fichero:
-
 
 ```` shell
 $ cat space.dat
@@ -1174,7 +1170,6 @@ $ cat space.dat
 
 Nuestro objetivo es determinar cuantas megas *pesan* nuestros registros.
 
-
 ```` shell
 $ awk '{total+= $1 / ($2=="kb" ? 1024: 1)}
        END{print total}'  space.dat
@@ -1187,6 +1182,7 @@ Sobre la variable `total` acumulamos el resultado de dividir el primer campo `$1
 
 Finalmente imprimimos el resultado *total* en el bloque `END`.
 
+<hr>
 
 ### 14. Agrupando registros en columnas
 
@@ -1211,7 +1207,7 @@ string4 string5 string6
 string8
 ````
 
-Parece complejo , pero resulta mucho más simple si entendemos como usar el *Output Feild Separator* `OFS`:
+Parece complejo , pero resulta mucho más simple si entendemos como usar el *Output Field Separator* `OFS`:
 
 ```` shell
 $ awk 'ORS=NR%3?" ":RS; END{print "\n"}' group.dat
@@ -1229,9 +1225,11 @@ string1 string2 string3 string4 string5 string6 string7
 
 `ORS=NR%3?" ":RS`: Finalmente usamos el operador *ternario* explicado anteriormente y evaluamos el modulo resultado de dividir el número de registro actual (teniendo en cuenta que el `RS` no se ha tocado por lo que sigue siendo `\n`) entre tres, si el resultado es *true* (distinto a cero) el `ORS` pasara a ser un espacio en blanco, en caso contrario se le asignará el valor del `RS`, es decir el salto de línea *unix*.
 
+<hr>
+
 ### 15. Procesando un fichero FASTA
 
-En bioinformática, el formato [FASTA] es un formato de fichero informático basado en texto.
+En *bioinformática*, el formato [FASTA] es un formato de fichero informático basado en texto.
 
 Supongamos el siguiente ejemplo:
 
@@ -1246,7 +1244,6 @@ GGT
 TTATGAT
 ````
 
-
 Nuestro objetivo es agregar los resultados de modo que obtengamos la longitud total de las secuencias de cada *header* y una sumarización total de la siguiente forma:
 
 ```` shell
@@ -1260,7 +1257,6 @@ Nuestro objetivo es agregar los resultados de modo que obtengamos la longitud to
 ````
 
 `awk` es una herramienta perfecta para este tipo de *reporting*, en este ejemplo usaremos:
-
 
 ```` shell
 awk '/^>/ { if (seqlen) {
@@ -1288,11 +1284,11 @@ Cuando la variable `seqlen` tenga valor la mostraremos, en todo caso se volacar�
 
 Las **segunda acción** es acumular en `seqlen` la longitud de línea *cuando no se trate de una cabecera*.
 
-
 En el **bloque `END`** mostramos la longitud de secuencia remanente y los totales.
 
 Este ejemplo se basa en mostrar la longitud de secuencia del *header* anterior, al procesar el primer registro evidentemente no tiene valor y se omite, en el `END` se muestra la información disponible después de procesar la última línea.
 
+<hr>
 
 ### 16. *Reporting* complejo
 
@@ -1316,7 +1312,6 @@ $ cat report.dat
      Instance:     s.1.aps.userDatabase.mount275000.attributes
 ````
 
-
 Nuestro objetivo es hacer un `report` en el se muestre la línea de *snaps* y su instancia asociada pero unicamente cuando el valor del primer *counter* sea superior a cero, en este caso buscaríamos:
 
 ```` shell
@@ -1334,7 +1329,9 @@ awk '{$1=$1}
      f &&  /Instance/ {print;f=0}'  report.dat
 ````
 
-La *primera acción* `{$1=$1}` se ejecuta para todos los registros y como ya hemos visto sirve para reconstruir los registros, en este caso *el truco* nos permite convertir los separadores basados en múltiples espacios en blanco en uno solo ya que es el valor por defecto para el `OFS`. Lo apreciamos mejor con un ejemplo:
+La *primera acción* `{$1=$1}` se ejecuta para todos los registros y como ya hemos visto sirve para reconstruir los registros, en este caso *el truco* nos permite convertir los separadores basados en múltiples espacios en blanco en uno solo ya que es el valor por defecto para el `OFS`.
+
+Lo apreciamos mejor con un ejemplo:
 
 ```` shell
 $ awk '1' text.dat
@@ -1351,11 +1348,11 @@ La *segunda acción* se dispara cuando encontramos el patrón `/snaps1/` y (`&&`
 
 Por último cuando el flag es *verdadero* y encontramos el patrón de *instancia* `f &&  /Instance/` imprimimos la línea y desactivaremos la variable: `print;f=0`.
 
+<hr>
 
 ### 17. *JOIN* entre ficheros
 
 Partimos de dos ficheros.
-
 
 ```` shell
 $ cat join1.dat
@@ -1373,7 +1370,7 @@ $ cat join2.dat
 6.5
 ````
 
-Necesitamos obtener las registros del primero cuyas columnas estan presentes en `join2.dat`. Es decir:
+Necesitamos obtener las registros del primero cuyas columnas están presentes en `join2.dat`. Es decir:
 
 ```` shell
 3.5 22
@@ -1395,13 +1392,17 @@ $ awk 'NR==FNR{a[$1];next}
        $1 in a'  join2.dat join1.dat
 ````
 
-Como siempre decompongamos por acciones.
+Como siempre descompongamos por acciones.
 
-Cuando el número de registro procesado equivalga al número de registro del fichero actual, es decir `NR==NFR` significará que estamos tratando el **primer* archivo. La *acción* asociada será incorporar al array `a` un elemento *nulo* indexado el contenido del primer campo `$1` , es decir `a[$1]` inmediatamente después pasamos a procesar el siguiente registro mediante `next`.
+Cuando el número de registro procesado equivalga al número de registro del fichero actual, es decir `NR==NFR` significará que estamos tratando el **primer** archivo.
 
-La **segunda acción** se disparará de forma implicita cuando el `NR` sea distinto al `FNR`, es decir, cuando estemos procesando el *segundo fichero*, le aplicaremos el *statement* `$1 in a` que será *true* cuando el primer campo del fichero `join1.dat` este  presente en el *array* formado por los campos del `join2.dat`.
+La *acción* asociada será incorporar al array `a` un elemento *nulo* indexado el contenido del primer campo `$1` , es decir `a[$1]` inmediatamente después pasamos a procesar el siguiente registro mediante `next`.
+
+La **segunda acción** se disparará de forma implícita cuando el `NR` sea distinto al `FNR`, es decir, cuando estemos procesando el *segundo fichero*, le aplicaremos el *statement* `$1 in a` que será *true* cuando el primer campo del fichero `join1.dat` este  presente en el *array* formado por los campos del `join2.dat`.
 
 Como ya sabemos, cuando algo es *verdadero* en `awk` por defecto se muestra el registro afectado por la condición por lo que obtenemos el resultado esperado.
+
+<hr>
 
 ### 18. Cruzando *passwd* y *group*
 
@@ -1422,7 +1423,7 @@ ms004:x:8051:002:Maria Saenz:/home/ms004:/bin/rbash
 rc005:x:6550:002:Rosa Camacho:/home/rc005:/bin/rbash
 ````
 
-Nuestro objetivo es obtener un report `login:nombre_grupo`:
+Nuestro objetivo es obtener un *report* `login:nombre_grupo`:
 
 ```` shell
 d001:dba
@@ -1442,6 +1443,8 @@ $ awk -F\: 'NR==FNR{g[$3]=$1;next}
 Para procesar `/etc/group` volvemos a usar la comparación `NR==FNR` para disparar la primera acción que almacenará en el array `g` bajo el index correspondiente al *ID* del grupo `$3` su nombre `$1`, es decir `g[$3]=$1`. Posteriormente rompemos cualquier procesamiento posterior del registro con `next`.
 
 La siguiente acción afectará a todos los registros del archivo `/etc/passwd`, cuando el cuarto campo `$4` (que corresponde al *ID* del grupo del usuario) este presente en el array `$4 in g` mostraremos el *login* `$1` y el valor asociado al elemento del array referido por la *ID* `g[$4]`. En definitiva: `print $1""FS""g[$4]`
+
+<hr>
 
 ### 19. Conexiones por usuario a un servidor
 
@@ -1465,13 +1468,15 @@ klashxx 2
 
 En este código la acción se ejecuta para todos los registros devueltos por el ejecutable ya que no existe ninguna filtro o patrón a procesar.
 
-`a[$1]++`: Inicializa como 1 o suma un elemento sobre la key de *usuario* `$1` del array `a`. En `awk` cuando un valor no esta *iniciado* se considera cero en un contexto numérico.
+`a[$1]++`: Inicializa como 1 o suma un elemento sobre la key de *usuario* `$1` del *array* `a`. En `awk` cuando un valor no esta *iniciado* se considera cero en un contexto numérico.
 
 En el bloque `END` recorremos el array mostrando la *key* y su valor asociado.
 
+<hr>
+
 ### 20. Obteniendo la media total proporcionada por el comando *uptime*
 
-Veamos la salida tipica de esta utilidad:
+Veamos la salida típica de esta utilidad:
 
 ```` shell
 $ uptime
@@ -1479,7 +1484,6 @@ $ uptime
 ````
 
 ¿Como podemos extraer la media total de las tres mediadas del *load average*?
-
 
 ```` shell
 $ uptime |awk '{printf "Media de carga: %0.2f\n", 
@@ -1503,7 +1507,7 @@ En mi opinión, `awk` es un lenguaje infravalorado y que merece mucho mas cariñ
 
 Si además te has quedado con ganas de más házmelo saber en los comentarios y considerare una segunda parte para terminar de matarte de aburrimiento.
 
-Happy coding! (english version coming soon :wink:)
+Happy coding!
 
 <hr>
 
@@ -1535,5 +1539,6 @@ Happy coding! (english version coming soon :wink:)
 [pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix) "Pipeline (Unix)"
 [verdadero]: https://www.gnu.org/software/gawk/manual/gawk.html#Truth-Values-and-Conditions "True and False in awk"
 [FASTA]: https://es.wikipedia.org/wiki/Formato_FASTA "Fichero FASTA"
-[post]: https://klashxx.github.io/awk-between-two-patterns "AWK between patterns"
-[articulo]: https://klashxx.github.io/ternary-operator "Ternary operator"
+[post]:{{ site.baseurl }}/awk-between-two-patterns "AWK between patterns"
+[articulo]:{{ site.baseurl }}/ternary-operator "Ternary operator"
+[english]: {{ site.baseurl }}/awk-power-for-your-cmd "AWK power for your command line"
