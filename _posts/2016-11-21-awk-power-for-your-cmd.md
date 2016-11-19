@@ -5,7 +5,7 @@ permalink: awk-power-for-your-cmd
 comments: true
 ---
 
-### A beginners guide to the *nix swiss army knife
+### A beginner\'s guide to the *nix swiss army knife
 
 <hr>
 
@@ -20,7 +20,6 @@ One more thing ... English is not my first language so *bear with me please* :pr
 Spanish version [here].
 
 <hr>
-
 
 > AWK is a language similar to PERL, only considerably more elegant.
 >
@@ -93,8 +92,7 @@ BEGIN { print "hello world!!" }
 
 `-v var=val` Set the variable `var` to the value `val` before execution of the program begins. 
 
-:point_right: **Note** : it can be used more than once, *setting* another variable each time.
-
+:point_right: **Note**: it can be used more than once, *setting* another variable each time.
 
 #### BEGIN and END
 
@@ -151,7 +149,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ````
 :point_right: **Note:** If the action is not given the **default action** is to print the record that matches the given pattern.
 
-But... how can we find out the *first* and *last* word of each line ?
+But... how can we find out the *first* and *last* word of each line?
 
 Of course `grep` can, but needs two steps:
 
@@ -187,6 +185,8 @@ Lorem elit.
 Aliquam ultrices.
 ````
 
+<hr>
+
 ### Isn't this better :sunglasses:? Yeah, but... HTF does this works?
 
 `awk` divides the input for your program into *Records* and *Fields*.
@@ -197,7 +197,7 @@ Aliquam ultrices.
 
 This is why records are, **by default**, *single lines*.
 
-Additionally `awk` has the `ORS` *Output Record Separator* to control the way records are presented to the `stdout`.
+Additionally `awk` has `ORS` *Output Record Separator* to control the way records are presented to the `stdout`.
 
 `RS` and `ORS` should be enclosed in **quotation marks**, which indicate a string *constant*. 
 
@@ -242,14 +242,13 @@ et facilisis neque ultrices.
 <<<---
 ````
 
-
 #### Fields
 
 `awk` records are automatically parsed or separated into *chunks* called **fields**. 
 
 By default, fields are separated by **whitespace** (any string of one or more spaces, TABs, or newlines), like words in a line.
 
-To refer to a field in an `awk` program, You use a dollar `$` sign followed by the number of the field you want. 
+To refer to a field in an `awk` program, you use a dollar `$` sign followed by the number of the field you want. 
 
 Thus, `$1` refers to the first field, `$2` to the second, and so on. 
 
@@ -265,7 +264,7 @@ dolor
 mauris
 ````
 
-`NF` is a predefined variable it\'s value is the **number of fields in the current record**. So, `$NF` will be allways the last field of the record.
+`NF` is a predefined variable it\'s value is the **number of fields in the current record**. So, `$NF` will be always the last field of the record.
 
 ```` shell
 $ awk '{print NF}' lorem_ipsum.dat 
@@ -279,7 +278,7 @@ $ awk '{print NF}' lorem_ipsum.dat
 
 `FS` holds the valued of the *field separator*, this value is a single-character string or a `regex` that matches the separations between fields in an input record. 
 
-The default value is `"  "`, a string consisting of a single space. As a special exception, this value means that any sequence of spaces, TABs, and/or newlines is a single separator.
+The default value is `"  "`, a string consisting of a single space. As a special exception, this value means that any sequence of *spaces*, *TABs*, and/or *newlines* is a single separator.
 
 In the same fashion that `ORS` we have a `OFS` variable to manage how our fields are going to be send to the output stream.
 
@@ -293,7 +292,6 @@ kmem:*:2:root
 sys:*:3:root
 tty:*:4:root
 ````
-
 
 ```` shell
 $ awk '!/^(_|#)/&&$1=$1' FS=":" OFS="<->" /etc/group
@@ -310,7 +308,7 @@ tty<->*<->4<->root
 
 <hr>
 
-Keeping *records* an *fields* in mind, were now ready to understand our previous code:
+Keeping *records* and *fields* in mind, were now ready to understand our previous code:
 
 ```` shell
 $ awk '{print $1,$NF}' lorem_ipsum.dat 
@@ -371,9 +369,9 @@ $ awk '{printf "%20s <-> %s\n",$1,$NF}' lorem_ipsum.dat
 
 #### Redirecting Output
 
-Output from `print` and `printf` is directed to the standard output by default but we can use redirection to change the destination.
+Output from `print` and `printf` is directed to the *standard output* by default but we can use redirection to change the destination.
 
-Redirections in `awk` are written just like redirections in shell commands, except that they are written inside the `awk` program.
+Redirections in `awk` are written just like redirections in *shell* commands, except that they are written inside the `awk` program.
 
 ```` shell
 $ awk 'BEGIN{print "hello">"hello.dat"}'
@@ -398,19 +396,19 @@ dom nov 13 18:36:25 CET 2016
 
 The [streams] can be pointed to the `stdin`, the `stdout` and the `stderr`.
 
-For example  we can write an error message to the `stderr` like this:
-
+For example,  we can write an error message to the `stderr` like this:
 
 ```` shell
 $ awk 'BEGIN{print "Serious error detected!" > "/dev/stderr"}'
 Serious error detected!
 ````
+<hr>
 
 #### Working with arrays
 
-In awk the arrays are **associative**, each one is a collection of *pairs* , **index** – **value*, where the any number or string can be an index.
+In awk the arrays are **associative**, each one is a collection of *pairs*, **index** – **value**, where the any number or string can be an index.
 
-No declaration is needed, new pairs can be added at any time.
+No declaration is needed; new pairs can be added at any time.
 
 Index  | Value
 -------|---------
@@ -457,7 +455,6 @@ dos two
 tres three
 cuatro four
 ````
-
 
 ```` shell
 awk '{dict[$1]=$2}
@@ -533,7 +530,9 @@ awk 'BEGIN{
 4 four
 ````
 
-### Funciones Build-in
+<hr>
+
+### Build-in functions
 
 `gensub(regexp, replacement, how [, target])` : Is the most advanced function for string replacing.
 
@@ -555,7 +554,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Aliquam interdum mauris volutpat nisl placerat, et facilisis.
 ````
 
-We’re going to swap the position of the words placed at the *left* and the *right* of each comma.
+We\'re going to swap the position of the words placed at the *left* and the *right* of each comma.
 
 ```` shell
 $ awk '{print gensub(/([^ ]+)( *, *)([^ ]+)/,
@@ -570,7 +569,6 @@ Aliquam interdum mauris volutpat nisl et, placerat facilisis.
 
 Using `gensub` we capture *three groups* and then we swap the order.
 
-
 To illustrate a simpler action let\'s change *dots* for *commas*:
 
 ```` shell
@@ -583,7 +581,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 Aliquam interdum mauris volutpat nisl placerat, et facilisis,
 ````
 
-Using gsub alternative:
+Using `gsub` alternative:
 
 ```` shell
 awk 'gsub(/\./, ",")' lorem.dat
@@ -635,7 +633,7 @@ $ awk 'n=split($0, a, ":"){print n, a[n]}' passwd
 7 /bin/rbash
 7 /bin/rbash
 ````
-**:point_right: Note**: This could be done in a much more simpler way:
+:point_right: **Note**: This could be done in a much more simpler way:
 
 ```` shell
 $ awk '{print NF,$NF}' FS=':' passwd
@@ -646,6 +644,7 @@ $ awk '{print NF,$NF}' FS=':' passwd
 7 /bin/rbash
 ````
 
+<hr>
 
 ### Custom functions
 
@@ -675,7 +674,8 @@ awk 'function test(m)
      }
      BEGIN{print test("param")}'
 ````
-Parsing by  parameter is the only way to make a local variable inside a function.
+
+Parsing by parameter is the only way to make a local variable inside a function.
 
 Scalar values are passed by value  and arrays by reference, so any change made to an array inside a function will be reflected in the global scope:
 
@@ -696,14 +696,11 @@ Outputs:
 ```` shell
 new
 ````
-
 <hr>
 
 # Now let\'s have some fun :godmode:
 
-
 **Our challenges**:
-
 
 [01](#penultimate-word-of-a-record). Penultimate word of a Record.
 
@@ -773,7 +770,8 @@ neque
 
 Not too much to explain here, `NF` stores the *number of fields* in the current record, so `NF-1` points to field before last and `$(NF-1)` will be its value.
 
- 
+<hr>
+
 ### 02. Replacing a record
 
 Our task, file record substitution, the third line must become:
@@ -808,8 +806,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Aliquam interdum mauris volutpat nisl placerat, et facilisis.
 ````
 
-### 03. Place a semicolon at the end of each record
+<hr>
 
+### 03. Place a semicolon at the end of each record
 
 ```` shell
 $ awk '1' ORS=";\n" lorem.dat
@@ -823,9 +822,9 @@ Aliquam interdum mauris volutpat nisl placerat, et facilisis neque ultrices.;
 
 As the default `RS` is the unix break line `\n`  we just need to *prefix* the semicolon to the Output Record Separator `OFS`. 
 
+:warning: **ATENCION**: What about that strange `1`?[^4]
 
-**:warning: ATENCION**: What about that strange `1`?[^4]
-
+<hr>
 
 ### 04. Place a comma between every word
 
@@ -841,6 +840,8 @@ Aliquam,interdum,mauris,volutpat,nisl,placerat,,et,facilisis,neque,ultrices.
 
 The most significant part of this code is how it forces a record reconstruction with `$1=$1` for the current value of the `OFS`.
 
+<hr>
+
 ### 05. All together?
 
 ```` shell
@@ -855,6 +856,7 @@ Aliquam,interdum,mauris,volutpat,nisl,placerat,,et,facilisis,neque,ultrices.;
 
 As *simply* as playing with output vars: `OFS` and `ORS`.
 
+<hr>
 
 ### 06. Redirecting odd records to a file and even ones to another
 
@@ -879,7 +881,7 @@ Curabitur a dapibus tellus.
 Aliquam interdum mauris volutpat nisl placerat, et facilisis.
 ````
 
-The *modulo* function (`%`) *finds* the remainder after division for the current Record Number `NR` divided by two:
+The [modulo] function (`%`) *finds* the remainder after division for the current Record Number `NR` divided by two:
 
 ```` shell
 $ awk '{print NR%2}' lorem.dat
@@ -891,15 +893,18 @@ $ awk '{print NR%2}' lorem.dat
 0
 ````
 
-As far as we now yet, in awk `1` is **True** and `0` **False**. We  redirect our output evaluating this fact.
+As far as we now yet, in `awk` `1` is **True** and `0` **False**. We  redirect our output evaluating this fact.
 
-`next` requires an special attention , it *forces* `awk` to **immediately** stop the current record process and pass to next one.
+`next` requires an special attention, it *forces* `awk` to **immediately** stop the current record process and pass to next one.
 
 In this way we elude a double condition that would look like this:
 
 ```` shell
-awk 'NR%2{print >"even.dat"}!NR%2{print >"odd.dat"}' lorem.dat
+awk  'NR % 2{print > "even.dat"}
+     !NR % 2{print > "odd.dat"}' lorem.dat
 ````
+
+<hr>
 
 ### 07. Given a password file get the missing field
 
@@ -912,7 +917,7 @@ ms004:x:8051:668:Maria Saenz::/bin/rbash
 rc005:x:6550:668:Rosa Camacho::/bin/rbash
 ````
 
-Let\'s assume the home directory by prefixing the fixed string `"/home/"` to the user name:
+Let\'s assume the home directory by prefixing the fixed string `"/home/"` to the *username*:
 
 ```` shell
 $ awk '$6="/home/"$1' FS=':' OFS=':' /etc/passwd
@@ -927,10 +932,11 @@ Our first step should be considering the field separator, a colon, for input as 
 
 Then we need to find the void field position, `6` for this example. 
 
-Finally we compose the required value using the given string and the user login stored in the first field.
+Finally, we compose the required value using the given string and the user login stored in the first field.
 
 :warning: **IMPORTANT**: `print` is not needed because `$6` assignation return value will always be *True* and `awk` default action is to print the affected record.
 
+<hr>
 
 ### 08. Field swapping
 
@@ -949,11 +955,11 @@ $ awk -F\: '{last=$1;$1=$NF;$NF=last}1' FS=":" OFS=':' /etc/passwd
 
 We are playing with an *intermediate* variable used to store the first field value, the we swap its value with the last one, finally we assign `last` variable to `$NF` (`$NF=last`).
 
+<hr>
 
 ### 09. Traceroute hacking
 
 Having this output:
-
 
 ```` shell
 $  traceroute -q 1 google.com 2>/dev/null
@@ -979,8 +985,9 @@ Because no condition is specified, the action is executed **for all records**.
 
 `total+=$(NF-1)`: `total` variable is used to *accumulate* the value of each *Record* penultimate *Field* `$(NF-1)`.
 
-Finally we use the `END` rule to show the final `total` value.
+Finally, we use the `END` rule to show the final `total` value.
 
+<hr>
 
 ### 10. Where are my children?
 
@@ -991,7 +998,7 @@ $ echo $$
 51026
 ````
 
-First thing: Launch the background processes:
+**First thing**: Launch the background processes.
 
 ```` shell
 $ sleep 10 & sleep 15 & sleep 20 &
@@ -1000,7 +1007,7 @@ $ sleep 10 & sleep 15 & sleep 20 &
 [3] 86753
 ````
 
-Using `ps` *utility* , `awk` will look for the third field known as the `PPID`.
+Using `ps` *utility*, `awk` will look for the third field known as the `PPID`.
 
 :point_right: **Note**: We\'re using `-v` to set *ppid* var before execution of the program begins. 
 
@@ -1013,10 +1020,10 @@ $ ps -ef|awk -v ppid=$$ '$3==ppid'
   501 86755 51026   0  7:57PM ttys001    0:00.00 awk $3==51026
 ````
 
-We just need the _**sleeps**_ :
+We just need the _**sleeps**_:
 
 ```` shell
-$ ps -ef|awk -v ppid=$$ '$3==ppid && /slee[p]/ 
+$ ps -ef|awk -v ppid=$$ '$3 == ppid && /slee[p]/ 
                          {print $2" -> "$5}'
 86751 -> 7:57PM
 86752 -> 7:57PM
@@ -1027,6 +1034,7 @@ The solution needs a new condition to add: find the *sleep* pattern in our curre
 
 The *triggered* action will be to print the second field `$2` with stands for the `PID` and the fifth `$5`, *the time stamp*.
 
+<hr>
 
 ### 11. Data aggregation
 
@@ -1056,14 +1064,13 @@ $ awk 'NR>1{ips[$1]+=$2}
 
 Bunch of things here to explain.
 
-`NR>1{ips[$1]+=$2}`: The action `ips[$1]+=$2` is only executed when the current record number is greater than one `NR>1`. This is needed to avoid the header of the file.
+`NR>1{ips[$1]+=$2}`: The action `ips[$1]+=$2` is only executed when the current record number is greater than one `NR>1`. This is needed to avoid the header.
 
 `ips` is an array indexed by the *ip value* (the `$1` field), for each key we are going to accumulate in the value of the second field.
 
-Take notice of an **important fact**, *if a key is not present in the array*, `awk` adds a new element to the *structure*, other otherwise is going to update the previous value pointed by that key (as in our example).
+Take notice of an **important fact**, *if a key is not present in the array*, `awk` adds a new element to the *structure*, otherwise is going to update the previous value pointed by that key (as in our example).
 
 The `END` *rule* is just used to iterate the array by indexes and values.
-
 
 **This code could be rewritten** in complete different manner to avoid the use of arrays and preserve the order taken advantage of the sorted *IPs* file:
 
@@ -1088,6 +1095,8 @@ The *trick* is clear, **every time IP (`$1`) changes** we show the stats of the 
 The `END` block is used to print the *pending values*.
 
 This code preserves the order, but *in my opinion*, this comes at the expense of significantly increased complexity.
+
+<hr>
 
 ### 12. Records between two patterns
 
@@ -1121,10 +1130,9 @@ right 0
 page 66
 ````
 
-Its based on the `flag` variable value, it will be *True* (`1`) when the starting pattern is found `OUTPUT` and *False* (`0`) when `END` *tag* is reached.
+Its based in the `flag` variable value, it will be *True* (`1`) when the starting pattern `OUTPUT` is found and *False* (`0`) when `END` *tag* is reached.
 
-
-To avoid an additional step **the action order is very important**, if we follow the *logic sequence*:
+To avoid an additional step, **the action order is very important**, if we follow the *logic sequence*:
 
 ```` shell
 $ awk '/OUTPUT/{flag=1}flag;/END/{flag=0}' pat.dat
@@ -1143,6 +1151,7 @@ The reason: after `OUTPUT` pattern is found the *flag* gets activated, as the *n
 
 We can avoid this behavior *placing the flag activation* as the **last step** of the flow. 
 
+<hr>
 
 ### 13. Field transformation
 
@@ -1160,7 +1169,7 @@ $ cat space.dat
 20.50 kb
 ````
 
-Our job will be to calculate our records **total weight* in *mega bytes*:
+Our job will be to calculate our records **total weight** in *mega bytes*:
 
 ```` shell
 $ awk '{total+= $1 / ($2=="kb" ? 1024: 1)}
@@ -1174,6 +1183,7 @@ To understand *how it works* one concept must be clear, the **[ternary] operator
 
 Finally, we print `total` value in the `END` block.
 
+<hr>
 
 ### 14. Records to columns
 
@@ -1198,7 +1208,7 @@ string4 string5 string6
 string8
 ````
 
-It may seems complex, but *becomes much more simpler* If we understand how to use the *Output Field Separator* `OFS`:
+It may seem complex, but *becomes much simpler* If we understand how to use the *Output Field Separator* `OFS`:
 
 ```` shell
 $ awk 'ORS = NR%3 ? FS : RS; END{print "\n"}' group.dat
@@ -1218,10 +1228,11 @@ string1 string2 string3 string4 string5 string6 string7
 
 If the *remainder* is *True* the `ORS` becomes `FS`, a *blank* space, otherwise the `RS` *default* value will be assigned, the *Unix* line break `\n`.
 
+<hr>
 
 ### 15. FASTA File processing
 
-In *bioinformatics*, [FASTA] format is a text-based format.
+In *bioinformatics*, [FASTA] is a text-based file format.
 
 Having the following example:
 
@@ -1275,8 +1286,7 @@ awk '/^>/ { if (seqlen) {
 
 The **first action** is *tied* to the header detection `/^>/`, that\'s because *all headers* stars with `>` character.
 
-
-When `seqlen` is *not null* it\'s value, that holds the previous sequence length, is printed to the *stdout* attached to the new header. `seqtotal` is updated and `seqlen` initialized to serve the next sequence. Finally we break further record processing with next.
+When `seqlen` is *not null* its value, that holds the previous sequence length, is printed to the *stdout* attached to the new header. `seqtotal` is updated and `seqlen` initialized to serve the next sequence. Finally, we break further record processing with `next`.
 
 The **second action**  `{seqlen += length($0)}` is used to update `seqlen` summing the total record length.
 
@@ -1285,6 +1295,8 @@ The `END` *rule* purpose is to show the *unprinted* sequence and the totals.
 **Trick** here is to print the *previous sequence* length when we found a *new header*.
 
 When we process the first record `seqlen` has no value so we skip the visualization.
+
+<hr>
 
 ### 16. Complex reporting
 
@@ -1329,7 +1341,7 @@ awk '{$1=$1}
 
 For **every record** the **first action is executed**, it forces `awk` to **rebuild the entire record**, using the current values for `OFS` [^3].
 
-This trick allow us to convert a *multiple space separator* to  a *single char*, the **default** value for the Output Field Separator.
+This trick allows us to convert a *multiple space separator* to  a *single char*, the **default** value for the Output Field Separator.
 
 Let\'s see this:
 
@@ -1345,9 +1357,13 @@ one two
 three four
 ````
 
-**Second action** is *triggered* when the pattern is found and the last field greater than zero `/snaps1/ && $NF>0`.  `awk` prints the record and assign a *True* value to the flag `print;f=1`.
+**Second action** is *triggered* when the pattern is found and the last field greater than zero `/snaps1/ && $NF>0`.
 
-Last step: when flag is *True* and *instance* pattern in the line `f &&  /Instance/`: show the line and deactivate flag: `print;f=0`.
+`awk` prints the record and assign a *True* value to the flag `print;f=1`.
+
+Last step: when flag is *True* and *instance* pattern in the line `f &&  /Instance/`, show the line and deactivate flag: `print;f=0`.
+
+<hr>
 
 ### 17. Files joiner
 
@@ -1401,6 +1417,8 @@ The pair action `a[$1];next` will be to add a new void value to the array indexe
 
 For the **second action** `NR != FNR` is applied implicitly and affects only to `join1.dat`, the second condition is `$1 in a` that will be *True* when the first field of `join1.dat` is an array key.
 
+<hr>
+
 ### 18. Passwd and Group
 
 These are to *unix classics*:
@@ -1437,9 +1455,11 @@ $ awk -F\: 'NR == FNR{g[$3]=$1;next}
             $4 in g{print $1""FS""g[$4]}' /etc/group /etc/passwd
 ````
 
-To process  `/etc/group` we repeat the `NR == FNR` comparison then store the *name of the group* `$1` indexed by its *ID* `$3`: `g[$3]=$1`. Finally we *break* further record processing with `next`.
+To process  `/etc/group` we repeat the `NR == FNR` comparison then store the *name of the group* `$1` indexed by its *ID* `$3`: `g[$3]=$1`. Finally, we *break* further record processing with `next`.
 
-The **second condition** will target only `/etc/passwd` records, when the fourth field `$4` (group ID) is present in the array  `$4 in g`, we will print the *login* and the value pointed by the array *indexed by the group id* `g[$4]`, so: `print $1""FS""g[$4]`.
+The **second condition** will target only `/etc/passwd` records, when the fourth field `$4` (*group ID*) is present in the array  `$4 in g`, we will print the *login* and the value pointed by the array *indexed by the group id* `g[$4]`, so: `print $1""FS""g[$4]`.
+
+<hr>
 
 ### 19. User connections
 
@@ -1466,7 +1486,9 @@ The action is performed for all the records.
   
 `a[$1]++`: This is the *counter*, for each *user* `$1` it increments the pointed value (uninitialized vars have the numeric value zero).
 
-In the `END` *block* We iterate the array *by key* and the stored value to present the results.
+In the `END` *block* iterate the array *by key* and the stored value to present the results.
+
+<hr>
 
 ### 20. Uptime total load average
 
@@ -1485,24 +1507,23 @@ $ uptime |awk '{printf "Load average mean: %0.2f\n",
 Load average mean: 14.94
 ````
 
-Here\'s a new technique.  We’re using a [regex] as the field separator `(:|,) +`, so the `FS` can be the *colon* and the *comma* followed by *zero or more* blank spaces.
+Here\'s a new technique.
+
+We’re using a [regex] as the field separator `(:|,) +`, so the `FS` can be a *colon* and a *comma* followed by *zero or more* blank spaces.
 
 We just need the *last three fields* to perform the arithmetic required, then we use `printf` attached to a *proper mask*.
-
 
 <hr>
 
 ## :warning: Disclaimer 2 :warning:
 
-If you are still here, **THANKS** !!
+If you are still here, **THANKS**!!
 
 From my point of view, `awk` is an *underrated* language and needs much love :heart:.
 
 If you’re hungry for more let me know it in the comment section bellow and I will consider a second part to finish my mission ... bore you to death :trollface:.
 
 Happy coding!
-
-<hr>
 
 
 [^1]: [A Guide to Unix Shell Quoting][quoting-guide].
@@ -1526,7 +1547,6 @@ Happy coding!
       `echo "test"|awk '{if (1==1){print}}'`
 
       That\'s because `1` will be always [true].
-
 
 [here]: https://klashxx.github.io/awk-power-para-tu-cmd "awk, power para tu command line"
 [gnu-awk]: https://www.gnu.org/software/gawk/manual/gawk.html "The GNU Awk User’s Guide"
