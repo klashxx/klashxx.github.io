@@ -8,6 +8,8 @@ comments: true
 ### A beginner\'s guide to the *nix swiss army knife
 
 <hr>
+Versión en español del [aquí][spanish].
+<hr>
 
 ## :warning: Disclaimer :warning:
 
@@ -16,8 +18,6 @@ This text refers only to `awk`'s **GNU** implementation known as _`gawk`_ witch 
 [The GNU Awk User’s Guide][gnu-awk] is its reference, for the *examples* I used real world cases taken mainly from my [Stackoverflow][so] answers.
 
 One more thing ... English is not my first language so *bear with me please* :pray:.
-
-Spanish version [here].
 
 <hr>
 
@@ -1548,15 +1548,15 @@ Happy coding!
 
       That\'s because `1` will be always [true].
 
-[here]: https://klashxx.github.io/awk-power-para-tu-cmd "awk, power para tu command line"
+[spanish]: {{ site.baseurl }}/awk-power-para-tu-cmd "awk, power para tu command line"
 [gnu-awk]: https://www.gnu.org/software/gawk/manual/gawk.html "The GNU Awk User’s Guide"
 [so]: http://stackoverflow.com/search?tab=votes&q=user%3a1200821%20%5bawk%5d "Stackoverflow"
 [quoting-guide]: http://resources.mpi-inf.mpg.de/departments/rg1/teaching/unixffb-ss98/quoting-guide.html "A Guide to Unix Shell Quoting"
 [pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix) "Pipeline (Unix)"
 [verdadero]: https://www.gnu.org/software/gawk/manual/gawk.html#Truth-Values-and-Conditions "True and False in awk"
 [FASTA]: https://en.wikipedia.org/wiki/FASTA_format "FASTA format"
-[post]: https://klashxx.github.io/awk-between-two-patterns "AWK between patterns"
-[ternary]: https://klashxx.github.io/ternary-operator "Ternary operator"
+[post]: {{ site.baseurl }}/awk-between-two-patterns "AWK between patterns"
+[ternary]: {{ site.baseurl }}/ternary-operator "Ternary operator"
 [streams]: https://www.gnu.org/software/gawk/manual/gawk.html#Special-FD "Special Files for Standard Preopened Data Streams"
 [PROCINFO]: https://www.gnu.org/software/gawk/manual/gawk.html#Controlling-Array-Traversal "Controlling Array Traversal"
 [modulo]: https://en.wikipedia.org/wiki/Modulo_operation "Modulo operation"
