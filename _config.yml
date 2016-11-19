@@ -1,6 +1,7 @@
 # Setup
 title: klashxx
-tagline: nixtip nonsense
+tagline: unix linux nonsense
+description: "awk go python sysadmin and much more"
 url: http://klashxx.github.io/
 baseurl: /
 paginate: 5
@@ -31,6 +32,9 @@ author:
   name:              Juan Diego Godoy Robles
   url:               https://github.com/klashxx
   email:             klashxx@gmail.com
+
+twitter_username: klashxx
+github_username:  klashxx
 
 # Custom vars
 version:             2.0.0
