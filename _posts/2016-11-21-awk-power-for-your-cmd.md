@@ -1521,10 +1521,9 @@ If you are still here, **THANKS**!!
 
 From my point of view, `awk` is an *underrated* language and needs much love :heart:.
 
-If you’re hungry for more let me know it in the comment section bellow and I will consider a second part to finish my mission ... bore you to death :trollface:.
+If you’re hungry for more let me know it in the comment section bellow and I will consider a second part to finish my mission ... bore you to death :neckbeard:.
 
 Happy coding!
-
 
 [^1]: [A Guide to Unix Shell Quoting][quoting-guide].
 
