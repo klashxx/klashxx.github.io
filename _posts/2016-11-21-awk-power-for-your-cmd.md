@@ -1552,7 +1552,7 @@ Happy coding!
 [so]: http://stackoverflow.com/search?tab=votes&q=user%3a1200821%20%5bawk%5d "Stackoverflow"
 [quoting-guide]: http://resources.mpi-inf.mpg.de/departments/rg1/teaching/unixffb-ss98/quoting-guide.html "A Guide to Unix Shell Quoting"
 [pipes]: https://en.wikipedia.org/wiki/Pipeline_(Unix) "Pipeline (Unix)"
-[verdadero]: https://www.gnu.org/software/gawk/manual/gawk.html#Truth-Values-and-Conditions "True and False in awk"
+[true]: https://www.gnu.org/software/gawk/manual/gawk.html#Truth-Values-and-Conditions "True and False in awk"
 [FASTA]: https://en.wikipedia.org/wiki/FASTA_format "FASTA format"
 [post]: {{ site.baseurl }}/awk-between-two-patterns "AWK between patterns"
 [ternary]: {{ site.baseurl }}/ternary-operator "Ternary operator"
