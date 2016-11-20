@@ -8,7 +8,7 @@ comments: true
 ### A beginner\'s guide to the *nix swiss army knife
 
 <hr>
-Versión en español del [aquí][spanish].
+Versión en español [aquí][spanish].
 <hr>
 
 ## :warning: Disclaimer :warning:
