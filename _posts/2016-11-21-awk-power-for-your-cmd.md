@@ -1,6 +1,7 @@
 ---
 layout: post
 title: awk, power for your command line
+image: /images/awk_flow.png
 permalink: awk-power-for-your-cmd
 comments: true
 ---

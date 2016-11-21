@@ -2,11 +2,11 @@
 title: klashxx
 tagline: unix linux nonsense
 description: "awk go python sysadmin and much more"
+image: /images/awk_flow.png
 url: http://klashxx.github.io
 baseurl: ""
 paginate: 5
 paginate_path: "page:num"
-baseurl: ""
 markdown: kramdown
 highlighter: rouge
 kramdown:

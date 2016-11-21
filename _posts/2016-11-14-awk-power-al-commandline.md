@@ -2,6 +2,7 @@
 layout: post
 title: awk, power para tu command line
 permalink: awk-power-para-tu-cmd
+image: /images/awk_flow.png
 comments: true
 ---
 
