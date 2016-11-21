@@ -2,8 +2,8 @@
 title: klashxx
 tagline: unix linux nonsense
 description: "awk go python sysadmin and much more"
-url: http://klashxx.github.io/
-baseurl: /
+url: http://klashxx.github.io
+baseurl: ""
 paginate: 5
 paginate_path: "page:num"
 baseurl: ""
