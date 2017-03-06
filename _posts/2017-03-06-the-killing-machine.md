@@ -29,10 +29,9 @@ It will be the perfect tool when there's no need to inspect the command args, on
 
 It solves the problem of  hiding parameters:
 
-> -f flag can be used for args examination but there’s no way to select processes by elapsed time
+> `-f`  Match the pattern anywhere in the full argument string of the process instead of just the executable name.
 
 But **does not provide** a way to sort processes by elapsed time.
-
 
 ### So ... Let’s build our custom solution.
 
