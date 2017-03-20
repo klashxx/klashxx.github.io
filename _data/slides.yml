@@ -1,3 +1,9 @@
 - title: AWK empower your comandline
+  slides: True
   id: awk
-  pdf: False
+
+
+- title: Python o como mejorar la vida de un administrador de sistemas
+  slides: False
+  id: python-sysadmin
+  video: https://www.youtube.com/watch?v=gFa0gGXPQG4
