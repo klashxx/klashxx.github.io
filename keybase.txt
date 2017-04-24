@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/klashxx
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://klashxx.github.io
+  * I am klashxx (https://keybase.io/klashxx) on keybase.
+  * I have a public key with fingerprint CDEF E957 909C 3B03 B863  0CC0 9E3C 1B76 33ED E676
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101caf6c110af8092bb4a419738bf76e3740e782345f23a92b6270ddce6111c027e0a",
+            "fingerprint": "cdefe957909c3b03b8630cc09e3c1b7633ede676",
+            "host": "keybase.io",
+            "key_id": "9e3c1b7633ede676",
+            "kid": "0101caf6c110af8092bb4a419738bf76e3740e782345f23a92b6270ddce6111c027e0a",
+            "uid": "00dd35414b8a2ecc5527100dc6441e19",
+            "username": "klashxx"
+        },
+        "service": {
+            "hostname": "klashxx.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1493068327,
+    "expire_in": 157680000,
+    "prev": "c57864c609c7f494bc5b21167a84463046cd8315b1e93b01ec1a322ae746bc4f",
+    "seqno": 10,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.68
+Comment: https://keybase.io/crypto
+
+yMIsAnicrVJbSBRRGN6trHZrNQoyiDDG7CJic2bOzJmRiB58CFRCgtIs1jlnzu6O
+l5l1Z3ZTQroZ9mJBRYVJaWpbZDe6LUF0IXpIoqQgukgXu0JXCrKbdUbrIeix83I4
+///93/n+//uvBEZ7/N69C6YnxDfPE97eS21xT9lQ1Zw1HLb0Bq5gDVdNhy9ao1Pb
+CVYbOlfA8YAHRAvJBABeCym8KmAMNQhUJCo4hGQqIshTpAgilEKCqLG8LCBe1wmV
+AQCEFxDlNS6PCxlmmMaiMcN0GC3RaYiqElJ5lYiYF7EiizwhvEpFAjCSRZHqVEYy
+K4xYtlvBxGHNpvmGxWLsERyW9w/8f9YdH6FjGVGCAGJFEyghkiQgwIJEhhBQoLpA
+m8ZMrZa6Wms0O1JfzzXmcSyYMAh15+o28jcgP2w4kTge6SkasxyLWDUsHXGcqF3g
+ljsNURe/muLgb6YgNkydzZJVJGjMNiyTKwAMSRzDpQZQFXlZEQWUx9H6qBGjQcNF
+SEhWeHbcf2jCdUBCigyJzAxAIahCTCQsACAjTYGQmQFloisikDCgKnMIUAI0URA0
+iqCMCQxxbm91psW4GamjhRmnbYRNzYnHKNd4+eLKMR6v3zM2bZS7ZB6/b9Kf1Xuf
+Nu5nYfpUXwVcmJlzr2d5dv+rQPPLm3vmlTR4D3ekxti5ZUeLMwbo1vSzgar5/pLO
+VfGuKdWP3rePn7wydeZy8aGac4MV+19nrJVmPO4/vTuw+GomOsXVdX+/+2Hb0mTV
+wJL1g19SPVDNKao0Z2Iuc+fxWecm7Ooov1HqH3x20PoxlH+g+dPrwvLOKaV1LVm9
+jT1X93WOf9Tr7DDfTk8v/rqulapXNp3X71/bsn2F79SDupaHJxfi8MdlVVlPmgfL
+js1sun0oeaR62oaXE1/N6Rr61JuxqDswcHrHtKZ3Pz9fOFp56Vnf1qKNizblRrL7
+Pj9N3mm7VTG3trU/+WJ2KsP3rd17fXNf7YlfAlFGCg==
+=CWKZ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/klashxx
+
+==================================================================
