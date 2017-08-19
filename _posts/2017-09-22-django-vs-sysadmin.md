@@ -75,6 +75,22 @@ La respuesta es simple: compartiendo mi experiencia, lo que me sirvió y lo que 
 
 <hr>
 
+## ¿Qué *Framework* escojo?
+
+La respuesta es obvia :grin: y la selección natural:
+
+- Hecho en **Python**: en mi opinión el mejor lenguaje para administrar sistemas.
+
+- **Fiable**: GitHub Starts, comunidad, webs en producción.
+
+- `models.py`: Mi portal debía hacer uso de **modelos** (¿?) **con persistencia** en BBDD y Django como [ORM][wiki-orm] es una pasada.
+
+- **Extensible**: ¿os habéis dado cuenta que hablo de *portal*? ... pues este también fue un punto fundamental ya que no solo se me solicito la programción de una aplicación, además se deseaba que el sistema fuera extensible, es decir que se pudieran *acoplar* nuevas *apps* aprovechando una infraestructura común (autenticación, plantillas, etc) …. el famoso *po ya que*.
+
+- [Django Rest Framework][drf-home] (lo comentaremos más adelante)
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -88,4 +104,5 @@ La respuesta es simple: compartiendo mi experiencia, lo que me sirvió y lo que 
 [repo-auth]: https://github.com/klashxx/PyConES2017/tree/01_auth "Django vs Sysadmin - 01_auth"
 [repo-apps]: https://github.com/klashxx/PyConES2017/tree/02_apps "Django vs Sysadmin - 02_apps"
 [repo-drf]: https://github.com/klashxx/PyConES2017/tree/03_drf "Django vs Sysadmin - 03_drf"
-
+[wiki-orm]: https://es.wikipedia.org/wiki/Mapeo_objeto-relacional "ORM - Wikipedia"
+[drf-home]: http://www.django-rest-framework.org/ "Django REST framework"
