@@ -13,7 +13,7 @@ Podéis acceder a las *slices* [aquí][dvs-slides].
 
 ### :warning: Disclaimer :warning:
 
-Para ilustrar este `post` se ha creado un aplicación demo cuyo código reside en este [repo][repo-master] de [Github][github] y se ha estructurado en [ramas][git-branch].
+Para ilustrar este `post` se ha creado un aplicación *demo* cuyo código reside en este [repo][repo-master] de [Github][github] y se ha estructurado en [ramas][git-branch].
 
 Cada una de las ramas es _usable per se_ y demuestran cómo implementar una funcionalidad concreta.
 
@@ -33,7 +33,7 @@ Las instrucciones detalladas se pueden encontrar en los `README.md` de las *bran
 
 <hr>
 
-#### Ramas
+Ramas:
 
 1. Gestión de [usuarios y autenticación][repo-auth].
 
@@ -41,13 +41,37 @@ Las instrucciones detalladas se pueden encontrar en los `README.md` de las *bran
 
 3. [DRF][repo-drf]. Diseñando nuestro *Backend*.
 
-Es necesario **aplicarlas en orden**, para observar cómo va creciendo y transformandose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
+<hr>
 
-Finalmente podremos inicializar el entorno completamente e instalar el master donde reside el proyecto completo.
+Es necesario **aplicarlas en orden**, desde la `01` a la `x`, para observar cómo va creciendo y transformandose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
+
+Finalmente podremos hacer `checkout` al *master* que contiene el código de la demo completa.
 
 :point_right: **ATENCION**: *Material complementario*. **NO** es necesario instalar la **demo** para seguir la charla :point_left:
 
+<hr>
 
+## Introducción
+
+Me llamo Juan Diego, soy Sysdamin y hasta hace 5 meses no sabía que era `HTML` :grimacing:.
+
+Bueno ... quizás esta última afirmación sea un poco exagerada, para ser honesto había usado *templating* (`jinja2`) para generar mails *bonitos* y experimentado minimamente con `Flask`.
+
+#### ¿Cómo me metí en este *embolao*?
+
+Me ofrecí voluntario OMG :neckbeard: … lo cierto es que llevaba tiempo con *inquietudes web* pero nunca había dispuesto del tiempo necesario crear un *side Project*, así que cuando laboralmente se me se planteo la necesidad de elaborar una web app la ocasión la pintaron calva :godmode:.
+
+Como suele pasar siempre cuando uno, o al menos yo, se encuentra, sin experiencia, ante una tarea de estas dimensiones. Se falla, se falla bastante :sob:.
+
+El objetivo este `post` es claro y responde a una *pregunta*:
+
+¿Cómo puedo ayudar a alguien que ya programe en **Python** pero sea un completo novato en el mundo web a comenzar con **Django**?
+
+La respuesta es simple: compartiendo mi experiencia, lo que me sirvió y lo que no.
+
+:warning: **ATENCION**:  Esto **NO** es un tutorial.
+
+<hr>
 
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
