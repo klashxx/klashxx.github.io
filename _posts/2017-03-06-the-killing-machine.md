@@ -27,11 +27,11 @@ It will be the perfect tool when there's no need to inspect the command args, on
 
 [`pkill` ](http://man7.org/linux/man-pages/man1/pkill.1.html)
 
-It solves the problem of  hiding parameters:
+It solves the problem of the *hiding parameters*:
 
 > `-f`  Match the pattern anywhere in the full argument string of the process instead of just the executable name.
 
-But **does not provide** a way to sort processes by elapsed time.
+But **it does not provide** a way to sort processes by elapsed time.
 
 ### So ... Let’s build our custom solution.
 
@@ -67,7 +67,7 @@ AIX FORMAT DESCRIPTORS
 >        %y     tty      TTY
 >        %z     vsz      VSZ
 
-First things first, To _Kill_ a process, first, we need is its `PID`, then get how long has it been running and finally the command name and it's args.
+First things first, To _Kill_ a process, we need is its `PID`, then get how long has it been running and finally the command name and it's args.
 
 This be accomplished by this format string using the codes mentioned in the table above:
 
