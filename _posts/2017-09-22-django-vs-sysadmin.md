@@ -55,7 +55,7 @@ Finalmente podremos hacer `checkout` al *master* que contiene el código de la d
 
 ## Introducción
 
-Me llamo Juan Diego, soy Sysdamin y hasta hace 5 meses no sabía que era `HTML` :grimacing:.
+Me llamo Juan Diego, soy Sysadmin y hasta hace cinco meses no sabía que era `HTML` :grimacing:.
 
 Bueno ... quizás esta última afirmación sea un poco exagerada, para ser honesto había usado *templating* (`jinja2`) para generar mails *bonitos* y experimentado minimamente con `Flask`.
 
@@ -119,6 +119,14 @@ Mis herramientas favoritas para servir a este objetivo son [Git][git] y [Docker]
 
 <hr>
 
+## ¿Qué motor de BBDD usaremos?
+
+Para hacer los primeros experimentos nos vale [SQLite][sqlite], para entornos productivos cualquiera de las otras tres opciones: [Oracle][oracle], [MySQL][mysql] o [**PostgreSQL**][postgres].
+
+Como administrador de BBDD esta última me parece la solución opensource mas óptima.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -141,3 +149,7 @@ Mis herramientas favoritas para servir a este objetivo son [Git][git] y [Docker]
 [virtualenv]: https://virtualenv.pypa.io/en/stable/# "Virtualenv"
 [git]: https://git-scm.com/ "Git"
 [docker]: https://docs.docker.com/ "Docker"
+[sqlite]: https://www.sqlite.org/ "SQLite"
+[oracle]: http://www.oracle.com/technetwork/database/index.html "Oracle"
+[mysql]: https://www.mysql.com/ "MySQL"
+[postgres]: https://www.postgresql.org/ "PostgreSQL"
