@@ -127,6 +127,147 @@ Como administrador de BBDD esta última me parece la solución opensource mas ó
 
 <hr>
 
+## La estructura del proyecto o segundo error
+
+La [documentación oficial][django-structure] propone la siguiente estructura a modo de ejemplo:
+
+```
+mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+    polls/
+        __init__.py
+        admin.py
+        migrations/
+            __init__.py
+            0001_initial.py
+        models.py
+        static/
+            polls/
+                images/
+                    background.gif
+                style.css
+        templates/
+            polls/
+                detail.html
+                index.html
+                results.html
+        tests.py
+        urls.py
+        views.py
+    templates/
+        admin/
+            base_site.html
+```
+
+Por lo que el proyecto (a partir de ahora **sysgate**) empezó con dos apps:
+
+ - Gestión de la autenticación (usuarios y grupos)
+ - La aplicación en si (llamémosla *metrics*)
+
+```
+sysgate/
+    manage.py
+    sysgate/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+    account/
+        __init__.py
+        …
+    metrics/
+        __init__.py
+        …
+    templates/
+        account/
+            login.html
+        metrics/
+            home.html
+```
+
+Todo funcionaba de acuerdo a lo previsto pero se me planteo un problema a la hora de añadir una nueva aplicación *manager*.
+
+Mi objetivo era el siguiente: Deseaba que el proyecto tuviera un *home común* donde se mostraran las aplicaciones disponibles al usuario en función de sus permisos.
+
+**¿Dónde incluyo este home?**
+
+- ¿En *account*?: no, se trata de separar funcionalidades y esta aplicación tiene un propósito único especifico que es la gestión de usuarios.
+
+- ¿En *metrics*?: no way, esto nos obligaría a duplicar el código en *manager*, o lo que es peor usar una vista de metrics.
+
+Finalmente opte por una de las soluciones más extendidas y que se basa en la creación de una aplicación *core*, donde agrupar precisamente todas las funcionalidades comunes que puedan ser llamadas desde cualquier otra aplicación, quedando la estructura así:
+
+```
+sysgate/
+    manage.py
+    sysgate/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+        routers.py
+        account/
+            __init__.py
+            ...
+        apps/
+            __init__.py
+            core/
+                templatetags/
+                    __init__.py
+                    core_tags.py
+                templates/
+                    core/
+                        home.html
+                        ...
+                __init__.py
+                ...
+            metrics/
+                templates/
+                    metrics/
+                        home.html
+                        ...
+                __init__.py
+                ...
+            manager/
+                templates/
+                    manager/
+                        home.html
+                        ...
+                __init__.py
+                ...
+        static/
+            js/
+                metrics.js
+                ...
+            css/
+                metrics.css
+                ...
+        fixtures/
+            metrics.json
+            ...
+        templates/
+            account/
+                login.html
+                ...
+            base.html
+            ...
+```
+
+La vista *home*, se renderizará a partir de la plantilla core *¿make sense?*
+
+De esta forma puedo añadir aplicaciones de forma indefinida aprovechando la infraestructura común expuesta por *ACCOUNT* y *CORE*.
+
+Igualmente me permite trabajar independientemente en cualquier otra aplicación sin temor a romper nada, si no tocamos el código compartido todo seguirá funcionando lo que facilita el desarrollo paralelo a múltiples miembros del equipo.
+
+:yum: **PRODUCTIVITY BOOST** :yum:
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -153,3 +294,4 @@ Como administrador de BBDD esta última me parece la solución opensource mas ó
 [oracle]: http://www.oracle.com/technetwork/database/index.html "Oracle"
 [mysql]: https://www.mysql.com/ "MySQL"
 [postgres]: https://www.postgresql.org/ "PostgreSQL"
+[django-structure]: https://docs.djangoproject.com/es/1.11/intro/reusable-apps/#your-project-and-your-reusable-app "Estructura Django propuesta"
