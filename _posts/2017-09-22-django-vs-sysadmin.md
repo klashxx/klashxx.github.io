@@ -385,6 +385,16 @@ Y finalmente el template devuelve el `html`.
 
 <hr>
 
+## Autenticación y registro
+
+En la estructura del proyecto ya hemos adelantado que lo ideal es mantener la funcionalidad común fuera del scope de las aplicaciones aislables, por lo que la primera de medida debe ser sacar la gestión de usuarios, en el ejemplo que estamos tratando se situa incluso en diferente nivel.
+
+:bulb: **TIP** :bulb: **fundamental** es *SIEMPRE* heredar del [Abstractuser][abstractuser], nos permitirá olvidarnos del modelo `Profile`. Esto debe hacerse siempre en la creación del proyecto ya que la migración de el modelo de `User` es muy complicada.
+
+:bulb: **TIP** :bulb: usar las auth views que ya nos viene de serie y permiten avanzar rápido en el proyecto sin perjuicio de una customización posterior.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -419,3 +429,4 @@ Y finalmente el template devuelve el `html`.
 [django-mvc]: https://docs.djangoproject.com/es/1.11/faq/general/#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names "Django MVC"
 [user]: https://docs.djangoproject.com/en/1.11/ref/contrib/auth/#django.contrib.auth.models.User) "Django Modelo de Usuario"
 [foreignkey]: https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ForeignKey "ForeignKey"
+[abstractuser]: https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project "Abstractuser"
