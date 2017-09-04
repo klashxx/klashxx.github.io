@@ -287,6 +287,38 @@ Como último consejo añadir que la librería [DJ Database URL][dj-database-url]
 
 <hr>
 
+## El enrutamiento
+
+Es uno de mis mecanismos favoritos del Framework y se basa en expresiones regulares.
+
+Cuando llamamos a una url, Django en primer lugar cargar el urls.py de la raíz del proyecto y a partir de ahí tratara de resolverla.
+
+```python
+urlpatterns = [
+    url(r'^', include('apps.core.urls', namespace='core')),
+    url(r'^account/', include('account.urls'), name='Autenticación'),
+    url(r'^metrics/', include('apps.metrics.urls'), name='Métricas'),
+    url(r'^manager/', include('apps.manager.urls'), name='Manager'),
+    url(r'^admin/', admin.site.urls),
+]
+```
+
+#### ¿Que pasa si introducimos nuestro dominio a secas?
+
+Django recorrerá las cinco regex que tenemos parametrizadas, determinara que la que única que cumple el patrón  es la primera, donde le indicamos que cargue las *urls* de la aplicación *core*:
+
+```python
+urlpatterns = [
+    url(r'^$', views.Home.as_view(), name='home'),
+]
+```
+
+En este caso solo tenemos un patrón contemplado la cadena vacia, que enrutaremos hacia la vista `home` del proyect.
+
+:bulb: **TIP** :bulb: La idea aquí es ser lo más modular posible, cada app gestionara sus propias *urls* intentando que la del proyecto raíz quede lo más simple y limpia posible.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
