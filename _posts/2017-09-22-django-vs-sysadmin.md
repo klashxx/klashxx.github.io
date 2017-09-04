@@ -319,6 +319,72 @@ En este caso solo tenemos un patrón contemplado la cadena vacia, que enrutaremo
 
 <hr>
 
+## Modelos y vistas ...¿Dónde está el controlador?
+
+Para comprender Django es fundamental entender como funciona su [MVC][django-mvc]:
+
+> Django parece ser un framework MVC, pero ustedes llaman al Controlador «vista», y a la Vista «plantilla». ¿Cómo es que no usan los nombres estándares?
+>
+> En nuestra interpretación de MVC, la «vista» describe el dato que es presentado al usuario. No es necesariamente cómo se ve el dato, sino qué dato se muestra. La vista describe cuál dato ve, no cómo lo ve. Es una distinción sutil.
+>
+> Entonces ¿donde entra el «controlador»? En el caso de Django, es probable que en el mismo framework: la maquinaria que envía una petición a la vista apropiada, de acuerdo a la configuración de URL de Django.
+>
+> Si busca acrónimos, usted podría decir que Django es un framework «MTV», esto es «modelo», «plantilla» y «vista». Ese desglose tiene mucho más sentido.
+
+En la práctica nos basta con saber:
+
+1. Diseñar los modelos.
+2. Programar las vistas y su template.
+
+Un modelo lo podríamos definir como una clase cuyos objetos instanciados están dotados de persistencia en BD.
+
+Un modelo se traduce en una tabla cuyos campos se mapean con las variables de la clase modelo.
+
+Diseñarlos requiere pensar detenidamente en los datos que se desean representar.
+
+Para ahorrarnos curro, podemos tomar como ejemplo el modelo [User][user].
+
+Los modelos además pueden relacionarse entre si, mediante campos / variables comunes (por ejemplo mediante [ForeignKey][foreignkey]).
+
+No necesitamos sql, ya que nos proporcionan una API query pythonica
+
+:bulb: **TIP** :bulb: Por defecto Django crea las tablas mediante las migrations, pero podemos establecer que el modelo no sea manejado y de esa forma podremos incorporar una tabla preexistente al ecosistema, es una buena forma de integrar datos provenientes de aplicaciones externas, y se nos proporcionan utilidades para insoeccionar el modelo.
+
+:bulb: **TIP** :bulb: Campo único, django se lleva mal con los modelos formados por pks en multiples campos.
+
+Las vistas, por norma general, se ocupan de representar ciertos datos provenientes de nuestros modelos.
+
+```python
+class Home(View):
+    def get(self, request, *args, **kwargs):
+        metricas = Metrica.objects.all().order_by('tipo')
+        return render(request,
+                      'metrics/home.html',
+                      context={'metricas': metricas})
+```
+
+:bulb: **TIP** :bulb: Usar Class Based Views … pueden parecer mas complicadas pero a largo plazo compensa su aprendizaje por la potencia que ofrecen
+
+Y finalmente el template devuelve el `html`.
+
+{% raw %}
+```html
+<h1>Metrics App</h1>
+<p>Bienvenid@ <strong>{{ request.user }}</strong></p>
+<p>Disponibles:</p>
+<table style="border: 1px solid black;">
+{% for metrica in metricas %}
+  <tr>
+    <td>{{ metrica.nombre }}</td>
+    <td>{{ metrica.get_tipo_display }}</td>
+  </tr>
+{% endfor %}
+</table>
+```
+{% endraw %}
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -350,3 +416,6 @@ En este caso solo tenemos un patrón contemplado la cadena vacia, que enrutaremo
 [decouple]: https://github.com/henriquebastos/python-decouple/ "Decouple"
 [settings-values]: https://docs.djangoproject.com/en/1.11/topics/settings/#using-settings-in-python-code "Settings values"
 [dj-database-url]: https://github.com/kennethreitz/dj-database-url/ "DJ-Database-URL"
+[django-mvc]: https://docs.djangoproject.com/es/1.11/faq/general/#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names "Django MVC"
+[user]: https://docs.djangoproject.com/en/1.11/ref/contrib/auth/#django.contrib.auth.models.User) "Django Modelo de Usuario"
+[foreignkey]: https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ForeignKey "ForeignKey"
