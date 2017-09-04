@@ -107,6 +107,18 @@ Así que paré, reflexioné y decidí **empezar por los basics**: concretamente 
 
 <hr>
 
+## El entorno de desarrollo
+
+El mínimo exigible es usar [virtualenv][virtualenv], con esto evitaremos al menos romper cosas.
+
+Pero ¿Qué pasa con la base de datos? ¿y al subir a producción?
+
+Clonar un repositorio y lanzar un comando… ya tenemos nuestra web levantada con su *proxy-server* y su *BD* ¿no resulta mágico? ¡Pues esa es la idea!
+
+Mis herramientas favoritas para servir a este objetivo son [Git][git] y [Docker][docker]. El código del [repositorio][repo-master] ilustra cómo usar diferentes técnicas (*Dockerfile*, *docker-compose*) para levantar el entorno de forma automatizada.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -126,4 +138,6 @@ Así que paré, reflexioné y decidí **empezar por los basics**: concretamente 
 [awesome]: https://gitlab.com/rosarior/awesome-django "Awesome Django"
 [django-girls-tuto]: https://tutorial.djangogirls.org/es/ "Django Girls"
 [mozilla-tuto]: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django "Tutorial Mozilla"
-
+[virtualenv]: https://virtualenv.pypa.io/en/stable/# "Virtualenv"
+[git]: https://git-scm.com/ "Git"
+[docker]: https://docs.docker.com/ "Docker"
