@@ -395,6 +395,28 @@ En la estructura del proyecto ya hemos adelantado que lo ideal es mantener la fu
 
 <hr>
 
+## Django Rest Framework (o GraphQL)
+
+Otra de mis grandes *pifias*.
+
+Mi primera aplicación se basaba en extraer un contexto en el `views.py` y enviársela al `template` para que renderizara los resultados.
+
+Para páginas sencillas el resultado era el esperado pero la cosa se complica si tienes que representar miles de datos.
+
+La plantilla se convierte en un infierno de llaves y todo tiende a romperse con facilidad.
+
+*There must be a better way*.
+
+:bulb: **TIP** :bulb: **separa el Backend (API) del Frontend**.
+
+La idea es simple, nuestro proyecto expondrá una `API`, en nuestro caso [`REST`][rest-api] que será invocada directamente desde nuestras plantillas.
+
+Al igual que ocurre con la separación de aplicaciones en la estructuración del proyecto, si separamos el *Backend* del *Frontend* podremos dividir el trabajo de forma más eficiente, además la API podrá ser integrada por otras aplicaciones por ejemplo móviles.
+
+La tecnología *trending* es [GraphQL][graphql] y sin duda es el futuro, pero [DRF][drf-home] es sin duda el mejor añadido a Django, y para ciertas querys resulta de difícil substitución, un caso claro es el de las métricas donde necesitamos todos los campos y de forma secuencial.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -430,3 +452,5 @@ En la estructura del proyecto ya hemos adelantado que lo ideal es mantener la fu
 [user]: https://docs.djangoproject.com/en/1.11/ref/contrib/auth/#django.contrib.auth.models.User) "Django Modelo de Usuario"
 [foreignkey]: https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ForeignKey "ForeignKey"
 [abstractuser]: https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project "Abstractuser"
+[rest-api]: https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional "REST API"
+[graphql]: http://graphql.org/ "GraphQL"
