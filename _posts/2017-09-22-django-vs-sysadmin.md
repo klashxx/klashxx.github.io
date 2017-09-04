@@ -71,7 +71,7 @@ El objetivo este `post` es claro y responde a una *pregunta*:
 
 La respuesta es simple: compartiendo mi experiencia, lo que me sirvió y lo que no.
 
-:warning: **ATENCION**:  Esto **NO** es un tutorial.
+:warning: **ATENCION**: Este texto **NO** es un tutorial.
 
 <hr>
 
@@ -91,6 +91,22 @@ La respuesta es obvia :grin: y la selección natural:
 
 <hr>
 
+## Consideración previa y primer error
+
+Caí en la tentación e intenté salir por la *vía rápida*, instale aplicaciones y boilerplate como un loco, mi objetivo era claro intentar encontrar el santo grial, un código que me lo diera todo (o mucho) hecho.
+
+Mi primera idea fué ...¡¿lo mismo me sirve un [CSM][csm-wiki]?!
+
+Descubrí [Awesome Django][awesome] *(highly recommended)* y probé casi todos (*Wagtail*, *Django-CMS*, *Mezzanine*) :blush:
+
+En ocasiones, *raras*, conseguí que alguno funcionara :sunglasses:, pero lo que hacía por debajo era *magia negra* para mi :fearful: y eso me imposibilitaba poder adaptar el *CMS* a mis necesidades, el  *zen Django* todavía estaba muy lejos de mi espíritu .
+
+Así que paré, reflexioné y decidí **empezar por los basics**: concretamente los tutoriales de [Django Girls][django-girls-tuto] y [Mozilla][mozilla-tuto] que os recomiendo fervientemente (en ese orden).
+
+**Mi conclusión**: Para ser productivos con este framework debemos comprender que se está moviendo *under the hood*.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -106,3 +122,8 @@ La respuesta es obvia :grin: y la selección natural:
 [repo-drf]: https://github.com/klashxx/PyConES2017/tree/03_drf "Django vs Sysadmin - 03_drf"
 [wiki-orm]: https://es.wikipedia.org/wiki/Mapeo_objeto-relacional "ORM - Wikipedia"
 [drf-home]: http://www.django-rest-framework.org/ "Django REST framework"
+[csm-wiki]: https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_contenidos "Content Management System"
+[awesome]: https://gitlab.com/rosarior/awesome-django "Awesome Django"
+[django-girls-tuto]: https://tutorial.djangogirls.org/es/ "Django Girls"
+[mozilla-tuto]: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django "Tutorial Mozilla"
+
