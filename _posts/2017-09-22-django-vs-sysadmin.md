@@ -417,6 +417,14 @@ La tecnología *trending* es [GraphQL][graphql] y sin duda es el futuro, pero [D
 
 <hr>
 
+## Gestión de permisos
+
+Otro de los temas básicos en una aplicación en producción, la infraestructura es común pero los usuarios no deben percibirlo salvo en el look and feel de la pagina, uno solo debe ver lo que debe ver.
+
+:bulb: **TIP** :bulb: Django tiene un control muy fino de permisos por usuario, pero podemos simplificar mucho la gestión usando los grupos como si fueran roles.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
