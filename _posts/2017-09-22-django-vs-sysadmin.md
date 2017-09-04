@@ -268,6 +268,25 @@ Igualmente me permite trabajar independientemente en cualquier otra aplicación 
 
 <hr>
 
+## El `settings.py` y nuestro `.env`
+
+El [`settings.py`][settings] contiene configuración global de nuestro proyecto, podríamos verlo como el *profile* que se carga  antes de ejecutar un script *bash*, es **absolutamente crítico**.
+
+La regla fundamental es *ocultar* el valor de las variables que escondan secretos, una de las formas de hacerlo es esconderlas en un archivo `.env` que, por supuesto, **NO DEBE ESTAR VERSIONADO**.
+
+Para acceder estos valores me ha sido realmente útil el módulo [Decouple][decouple].
+
+```python
+from decouple import config
+SECRET_KEY = config('SECRET_KEY')
+```
+
+Otra punto a tener en cuenta es que Django dispone de un [módulo][settings-values] para acceder a las variables fijadas en settings por lo que este fichero puede ser un buen lugar para setear ciertos valores a los que deseemos acceder desde cualquier punto del proyecto.
+
+Como último consejo añadir que la librería [DJ Database URL][dj-database-url] nos permite usar la configuración en *url* de nuestra BD.
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -295,3 +314,7 @@ Igualmente me permite trabajar independientemente en cualquier otra aplicación 
 [mysql]: https://www.mysql.com/ "MySQL"
 [postgres]: https://www.postgresql.org/ "PostgreSQL"
 [django-structure]: https://docs.djangoproject.com/es/1.11/intro/reusable-apps/#your-project-and-your-reusable-app "Estructura Django propuesta"
+[settings]: https://docs.djangoproject.com/ko/1.11/ref/settings/ "settings.py"
+[decouple]: https://github.com/henriquebastos/python-decouple/ "Decouple"
+[settings-values]: https://docs.djangoproject.com/en/1.11/topics/settings/#using-settings-in-python-code "Settings values"
+[dj-database-url]: https://github.com/kennethreitz/dj-database-url/ "DJ-Database-URL"
