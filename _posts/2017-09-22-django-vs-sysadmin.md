@@ -89,6 +89,8 @@ La respuesta es obvia :grin: y la selección natural:
 
 - [Django Rest Framework][drf-home] (lo comentaremos más adelante)
 
+- Miles de [paquetes][djangopackages].
+
 <hr>
 
 ## Consideración previa y primer error
@@ -440,6 +442,7 @@ Otro de los temas básicos en una aplicación en producción, la infraestructura
 [repo-drf]: https://github.com/klashxx/PyConES2017/tree/03_drf "Django vs Sysadmin - 03_drf"
 [wiki-orm]: https://es.wikipedia.org/wiki/Mapeo_objeto-relacional "ORM - Wikipedia"
 [drf-home]: http://www.django-rest-framework.org/ "Django REST framework"
+[djangopackages]: https://djangopackages.org/categories/apps/?sort=repo_watchers&dir=desc "Django Packages"
 [csm-wiki]: https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_contenidos "Content Management System"
 [awesome]: https://gitlab.com/rosarior/awesome-django "Awesome Django"
 [django-girls-tuto]: https://tutorial.djangogirls.org/es/ "Django Girls"
