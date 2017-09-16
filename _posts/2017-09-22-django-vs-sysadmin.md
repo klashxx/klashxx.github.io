@@ -503,7 +503,7 @@ def en_grupo(user, group_name):
     return True if group_name in groups else False
 ```
 
-Y el `template` que lo carga:
+Y el `template` que lo *renderiza*:
 
 ```python
 {% raw %}
