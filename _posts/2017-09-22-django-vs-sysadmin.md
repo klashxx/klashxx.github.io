@@ -681,7 +681,7 @@ class MetricasViewSet(viewsets.ModelViewSet):
 
 El `manage.py` está muy bien para desarrollar, pero los tráficos serios deben ser atendidos desde un **servidor web** propiamente dicho, mi opción predilecta para producción es NGINX.
 
-[*NGINX*][nginx] se encargará de se servir el *contenido estático* y mediante un *proxyserver* redireccionará las peticiones de contenido dinámico a la `url` servida por el servidor [*WSGI*][wsgi-wiki].
+[*NGINX*][nginx] se encargará de se servir el *contenido estático* y mediante un *proxyserver* redireccionará las peticiones de contenido dinámico a la `url` levantada por el servidor [*WSGI*][wsgi-wiki].
 
 ```
 server {
@@ -703,6 +703,8 @@ server {
     }
 }
 ```
+
+Necesitamos por supuesto un servidor [*Python*][django-wsgi] que será el que mueva nuestro código, mi elegido es [*Gunicorn*][gunicorn].
 
 ```
 CMD ["gunicorn", "sysgate.wsgi", "--log-level=debug", "-w 2", "-b 0.0.0.0:8000"]
@@ -761,4 +763,4 @@ En el [*repo*][repo-master] podéis encontrar un ejemplo práctico de como combi
 [gunicorn]: http://gunicorn.org/ "Gunicorn"
 [nginx]: https://nginx.org/ "NGINX"
 [wsgi-wiki]: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface "WSGI Wikipedia"
-
+[django-wsgi]: https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/ "How to deploy with WSGI"
