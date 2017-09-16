@@ -8,14 +8,17 @@ comments: true
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Prefacio
+> Relataremos la historia de un brujo Sysdadmin que vivía en el Reino del lejano Backend, triste y enclaustrado entre terminales, conjurando hechizos en Perl y awk, hasta que un buen día (¿o malo quizás?) se le encomendó la noble misión de pregonar en los Siete Reinos HTML los datos que emanaban de las mazmorras SQL.
+>
+> Solo una gran magia podría satisfacer tan alta causa: Python.
 
 Texto base sobre el que versará la charla [Djando vs Sysadmin][dvs-agenda] a impartir en Cáceres durante la [PyConES 2017][pycones2017-home].
 
-Podéis acceder a las *slices* [aquí][dvs-slides].
+Podéis acceder a las *slides* [aquí][dvs-slides].
 
 ### :warning: Disclaimer :warning:
 
-Para ilustrar este `post` se ha creado un aplicación *demo* cuyo código reside en este [repo][repo-master] de [Github][github] y se ha estructurado en [ramas][git-branch].
+Para ilustrar este `post` se ha creado un aplicación *demo* cuyo código reside en [este repo][repo-master] de [Github][github] y se ha estructurado en [ramas][git-branch].
 
 Cada una de las ramas es _usable per se_ y demuestran cómo implementar una funcionalidad concreta.
 
@@ -87,7 +90,9 @@ La respuesta es obvia :grin: y la selección natural:
 
 - **Extensible**: ¿os habéis dado cuenta que hablo de *portal*? ... pues este también fue un punto fundamental ya que no solo se me solicito la programción de una aplicación, además se deseaba que el sistema fuera extensible, es decir que se pudieran *acoplar* nuevas *apps* aprovechando una infraestructura común (autenticación, plantillas, etc) …. el famoso *po ya que*.
 
-- [Django Rest Framework][drf-home] (lo comentaremos más adelante)
+- [Django Rest Framework][drf-home] (lo comentaremos más adelante).
+
+- El [*Admin Site*][admin-site].
 
 - Miles de [paquetes][djangopackages].
 
@@ -126,6 +131,39 @@ Mis herramientas favoritas para servir a este objetivo son [Git][git] y [Docker]
 Para hacer los primeros experimentos nos vale [SQLite][sqlite], para entornos productivos cualquiera de las otras tres opciones: [Oracle][oracle], [MySQL][mysql] o [**PostgreSQL**][postgres].
 
 Como administrador de BBDD esta última me parece la solución opensource mas óptima.
+
+<hr>
+
+## El `settings.py` y nuestro `.env`
+
+El [`settings.py`][settings] contiene configuración global de nuestro proyecto, podríamos verlo como el *profile* que se carga  antes de ejecutar un script *bash*, es **absolutamente crítico**.
+
+La regla fundamental es *ocultar* el valor de las variables que escondan secretos, una de las formas de hacerlo es esconderlas en un archivo `.env` que, por supuesto, **NO DEBE ESTAR VERSIONADO**.
+
+Para acceder estos valores me ha sido realmente útil el módulo [Decouple][decouple].
+
+```python
+from decouple import config
+SECRET_KEY = config('SECRET_KEY')
+```
+
+Otra punto a tener en cuenta es que Django dispone de un [módulo][settings-values] para acceder a las variables fijadas en settings por lo que este fichero puede ser un buen lugar para setear ciertos valores a los que deseemos acceder desde cualquier punto del proyecto.
+
+Como último consejo añadir que la librería [DJ Database URL][dj-database-url] nos permite usar la configuración en *url* de nuestra BD.
+
+`.env`
+
+```bash
+DB_URL=postgresql://postgres:postgres@postgres:5432/postgres
+```
+
+`settings.py`
+
+```python
+DATABASES = {
+    'default': dj_database_url.config(default=config('DB_URL')),
+    }
+```
 
 <hr>
 
@@ -270,25 +308,6 @@ Igualmente me permite trabajar independientemente en cualquier otra aplicación 
 
 <hr>
 
-## El `settings.py` y nuestro `.env`
-
-El [`settings.py`][settings] contiene configuración global de nuestro proyecto, podríamos verlo como el *profile* que se carga  antes de ejecutar un script *bash*, es **absolutamente crítico**.
-
-La regla fundamental es *ocultar* el valor de las variables que escondan secretos, una de las formas de hacerlo es esconderlas en un archivo `.env` que, por supuesto, **NO DEBE ESTAR VERSIONADO**.
-
-Para acceder estos valores me ha sido realmente útil el módulo [Decouple][decouple].
-
-```python
-from decouple import config
-SECRET_KEY = config('SECRET_KEY')
-```
-
-Otra punto a tener en cuenta es que Django dispone de un [módulo][settings-values] para acceder a las variables fijadas en settings por lo que este fichero puede ser un buen lugar para setear ciertos valores a los que deseemos acceder desde cualquier punto del proyecto.
-
-Como último consejo añadir que la librería [DJ Database URL][dj-database-url] nos permite usar la configuración en *url* de nuestra BD.
-
-<hr>
-
 ## El enrutamiento
 
 Es uno de mis mecanismos favoritos del Framework y se basa en expresiones regulares.
@@ -350,7 +369,7 @@ Los modelos además pueden relacionarse entre si, mediante campos / variables co
 
 No necesitamos sql, ya que nos proporcionan una API query pythonica
 
-:bulb: **TIP** :bulb: Por defecto Django crea las tablas mediante las migrations, pero podemos establecer que el modelo no sea manejado y de esa forma podremos incorporar una tabla preexistente al ecosistema, es una buena forma de integrar datos provenientes de aplicaciones externas, y se nos proporcionan utilidades para insoeccionar el modelo.
+:bulb: **TIP** :bulb: Por defecto Django crea las tablas mediante las migrations, pero podemos establecer que el modelo no sea manejado y de esa forma podremos incorporar una tabla preexistente al ecosistema, es una buena forma de integrar datos provenientes de aplicaciones externas, y se nos proporcionan utilidades para inspeccionar el modelo.
 
 :bulb: **TIP** :bulb: Campo único, django se lleva mal con los modelos formados por pks en multiples campos.
 
@@ -419,6 +438,103 @@ La tecnología *trending* es [GraphQL][graphql] y sin duda es el futuro, pero [D
 
 <hr>
 
+## Frontend
+
+Los *templates* son base del Frontend y la tercera pata del [*MVT*][django-mvc], es donde vamos a escribir nuestro `HTML` (`JS` y demás).
+
+Es un sistema diseñado de forma muy inteligente, teniendo en cuenta que Django no esta enfocado a la construcción de [*single-page applications*][spa-wiki].
+
+Cada *app* tendrá sus propios *templates* encargados de renderizar los datos proporcionados por la vista que invoca o extraídos directamente desde la `API` (si la hemos usado claro).
+
+Se sitúan en la ruta `template/app` que debe colgar de la carpeta donde esté el código de la aplicación.
+
+Las plantillas del proyecto raíz colgarán del primer nivel.
+
+Ejemplo en *sysgate*:
+
+```
+├── account
+├── apps
+│   ├── core
+│   │   ├── templates
+│   │   │   └── core
+│   │   │       └── home.html
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── core_tags.py
+│   └── metrics
+│       ├── templates
+│       │   └── metrics
+│       │       └── home.html
+├── templates
+│   ├── 404.html
+│   ├── account
+│   │   ├── login.html
+│   │   ├── profile.html
+│   │   └── registro.html
+│   ├── base.html
+│   └── base_generic.html
+```
+
+Para el neófito es vital entender tres conceptos:
+
+1. La herencia
+3. Lenguaje
+2. Custom *Tags* y *Filtros*
+
+La **herencia** nos permite extender (y modificar) la plantilla base que contendrá los elementos básicos y el look and feel de nuestra web, facilitándonos enormemente la tarea de construir una nueva pagina ya que los elementos comunes ya nos vienen dados ([*DRY*][dry-wiki]).
+
+Podríamos verlo, construyendo un paralelismo, como la [*herencia*][python-inheritance] de de una *clase* Python, podemos heredar todo el código de la clase base, pero también podemos ampliarlo y modificarlo
+
+Respecto al *lenguaje* poco que mencionar, *Django* proporciona su propia [*sintaxis*][template-language] y nos permite expresarnos en el *template* de modo programático proporcionándonos una enorme versatilidad.
+
+Los **tags** y **filtros** nos permiten incorporar código Python y usarlo en nuestras plantillas.
+
+Para *visualizar* estos conceptos, supongamos este `tag`:
+
+```python
+from django import template
+
+register = template.Library()
+
+@register.filter('en_grupo')
+def en_grupo(user, group_name):
+    groups = user.groups.all().values_list('name', flat=True)
+    return True if group_name in groups else False
+```
+
+Y el `template` que lo carga:
+
+```python
+{% raw %}
+{% extends 'base.html' %}
+
+{% load core_tags %}
+
+{% block content %}
+
+<div class="container">
+  {% if request.user|en_grupo:"pycones" or user.is_superuser %}
+    <div class="jumbotron container-fluid">
+      <h1>Metrics</h1>
+      <a class="btn" href="{% url 'metrics:home' %}">Acceder</a>
+    </div>
+  {% endif %}
+
+  {% if not user.is_authenticated %}
+    <div class="alert" align="center" role="alert">
+      <button type="button" class="close"></button>
+      Login para acceder
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}
+{% endraw %}
+```
+
+<hr>
+
 ## Gestión de permisos
 
 Otro de los temas básicos en una aplicación en producción, la infraestructura es común pero los usuarios no deben percibirlo salvo en el look and feel de la pagina, uno solo debe ver lo que debe ver.
@@ -442,6 +558,7 @@ Otro de los temas básicos en una aplicación en producción, la infraestructura
 [repo-drf]: https://github.com/klashxx/PyConES2017/tree/03_drf "Django vs Sysadmin - 03_drf"
 [wiki-orm]: https://es.wikipedia.org/wiki/Mapeo_objeto-relacional "ORM - Wikipedia"
 [drf-home]: http://www.django-rest-framework.org/ "Django REST framework"
+[admin-site]: https://docs.djangoproject.com/en/dec/ref/contrib/admin/ "Admin Site"
 [djangopackages]: https://djangopackages.org/categories/apps/?sort=repo_watchers&dir=desc "Django Packages"
 [csm-wiki]: https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_contenidos "Content Management System"
 [awesome]: https://gitlab.com/rosarior/awesome-django "Awesome Django"
@@ -460,8 +577,13 @@ Otro de los temas básicos en una aplicación en producción, la infraestructura
 [settings-values]: https://docs.djangoproject.com/en/1.11/topics/settings/#using-settings-in-python-code "Settings values"
 [dj-database-url]: https://github.com/kennethreitz/dj-database-url/ "DJ-Database-URL"
 [django-mvc]: https://docs.djangoproject.com/es/1.11/faq/general/#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names "Django MVC"
-[user]: https://docs.djangoproject.com/en/1.11/ref/contrib/auth/#django.contrib.auth.models.User) "Django Modelo de Usuario"
-[foreignkey]: https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ForeignKey "ForeignKey"
-[abstractuser]: https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project "Abstractuser"
+[user]: https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User) "Django Modelo de Usuario"
+[foreignkey]: https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.ForeignKey "ForeignKey"
+[abstractuser]: https://docs.djangoproject.com/en/dev/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project "Abstractuser"
 [rest-api]: https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional "REST API"
 [graphql]: http://graphql.org/ "GraphQL"
+[spa-wiki]: https://es.wikipedia.org/wiki/Single-page_application "Single-page application"
+[dry-wiki]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself "Don't repeat yourself"
+[template-extends]: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatetag-extends "Template extends"
+[python-inheritance]: https://docs.python.org/3.6/tutorial/classes.html#inheritance "Python Inheritance"
+[template-language]: https://docs.djangoproject.com/en/dev/ref/templates/language/ "The Django template language"
