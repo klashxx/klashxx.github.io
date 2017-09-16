@@ -608,6 +608,71 @@ Ejemplo:
 
 Otro de los temas básicos en una aplicación en producción, la infraestructura es común pero los usuarios no deben percibirlo salvo en el look and feel de la pagina, uno solo debe ver lo que debe ver.
 
+Podemos y debemos controlar el acceso a nuestras urls a tres niveles:
+
+- Templates
+
+- Vistas
+
+- Serializadores
+
+### Vistas
+
+```python
+def super_o_esta_en_grupo(user, grupo):
+    if not user.is_authenticated():
+        return False
+
+    if user.is_superuser:
+        return True
+
+    if user.groups.filter(name=grupo).exists():
+        return True
+
+    return False
+```
+
+```python
+@method_decorator(login_required, name='dispatch')
+class Home(UserPassesTestMixin, View):
+    def test_func(self):
+        return super_o_esta_en_grupo(self.request.user,
+                                     grupo='pycones')
+    def get(self, request, *args, **kwargs):
+        return render(request, 'metrics/home.html')
+```
+
+### Serializadores
+
+```python
+class EsSuperOTienePermisosPorGrupo(BasePermission):
+    def has_permission(self, request, view):
+        gr_auth_map = getattr(view, 'grupos_autorizados', {})
+        grupos_autorizados = gr_auth_map.get(request.method, [])
+        return any([super_o_esta_en_grupo(request.user, grupo)
+                    for grupo in grupos_autorizados])
+```
+
+```python
+class MetricasViewSet(viewsets.ModelViewSet):
+    grupos_autorizados = settings.GR_AUTH_METRICS
+    permission_classes = (IsAuthenticated,
+                          EsSuperOTienePermisosPorGrupo,)
+    serializer_class = SerializerMetricas
+    http_method_names = ['get']
+    filter_backends = (OrderingFilter, SearchFilter,)
+    search_fields = ('tipo',)
+
+    def get_queryset(self):
+        queryset = Metrica.objects.all().order_by('tipo')
+        tipo = self.request.query_params.get('tipo', None)
+
+        if tipo is not None:
+            queryset = queryset.filter(tipo=tipo)
+
+        return queryset
+```
+
 :bulb: **TIP** :bulb: Django tiene un control muy fino de permisos por usuario, pero podemos simplificar mucho la gestión usando los grupos como si fueran roles.
 
 <hr>
