@@ -677,6 +677,41 @@ class MetricasViewSet(viewsets.ModelViewSet):
 
 <hr>
 
+## Estrategias de Deploy
+
+El `manage.py` está muy bien para desarrollar, pero los tráficos serios deben ser atendidos desde un **servidor web** propiamente dicho, mi opción predilecta para producción es NGINX.
+
+[*NGINX*][nginx] se encargará de se servir el *contenido estático* y mediante un *proxyserver* redireccionará las peticiones de contenido dinámico a la `url` servida por el servidor [*WSGI*][wsgi-wiki].
+
+```
+server {
+    listen 80;
+    server_name localhost;
+    charset utf-8;
+
+	location ~ ^/favicon.(\w*)$ {
+		alias /static/img/favicon.ico;
+	}
+
+    location /static {
+        autoindex on;
+        root /;
+    }
+
+    location / {
+        proxy_pass http://sysgate:8000;
+    }
+}
+```
+
+```
+CMD ["gunicorn", "sysgate.wsgi", "--log-level=debug", "-w 2", "-b 0.0.0.0:8000"]
+```
+
+En el [*repo*][repo-master] podéis encontrar un ejemplo práctico de como combinar estos elementos y asociarlos a otra tecnología puntera de despliegue: [*Docker*][docker-install].
+
+<hr>
+
 [pycones2017-home]: https://2017.es.pycon.org "PyConES 2017 - Cáceres"
 [dvs-agenda]: https://2017.es.pycon.org/es/schedule/sysadmin-vs-django/ "Django vs Sysadmin - PyConES 2017"
 [dvs-slides]: https://klashxx.github.io/slides/django/ "Django vs Sysadmin - Slides"
@@ -723,3 +758,7 @@ class MetricasViewSet(viewsets.ModelViewSet):
 [template-language]: https://docs.djangoproject.com/en/dev/ref/templates/language/ "The Django template language"
 [bootstrap-wiki]: https://es.wikipedia.org/wiki/Bootstrap_(framework) "Bootstrap Wikipedia"
 [js-mozilla]: https://developer.mozilla.org/es/docs/Web/JavaScript "Javascript Mozilla Tutorial"
+[gunicorn]: http://gunicorn.org/ "Gunicorn"
+[nginx]: https://nginx.org/ "NGINX"
+[wsgi-wiki]: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface "WSGI Wikipedia"
+
