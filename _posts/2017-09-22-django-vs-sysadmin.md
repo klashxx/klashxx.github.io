@@ -535,6 +535,75 @@ Y el `template` que lo *renderiza*:
 
 <hr>
 
+## Mi web no es *cool* o tercer error
+
+Andaba yo muy contento con los resultados del trabajo hasta la primera reunión de seguimiento con los usuarios donde la primera pregunta fué, … **¿y esto cómo se ve en el móvil?**
+
+*¿OLA K ASE?*
+
+No se me había pasado por la cabeza esa posibildad: **se veía mal, muy mal**.
+
+La cruda (o no) realidad es esta: *Si deseas que tu web tenga un interfaz de usuario moderno tendrás que ir mas allá de Python y un HTML básico*.
+
+Yo me he apoyado fundamentalmente en estos dos elementos:
+
+- Bootstrap
+- Javascript
+
+[**Bootstrap**][bootstrap-wiki] es un *framework* web basado principalmente en HTML y CSS que mejora (o hace más vistosos) los elementos que incluimos en nuestros *templates*, además permite que nuestras paginas sean responsive sin demasiada dificultad (Sistema en grid)
+
+[**Javascript**][js-mozilla] es un lenguaje que tiene la gran ventaja de poder ejecutarse en el navegador. Existen innumerables librerías `.js` muchas de ellas *super cool*, que nos permiten hacer verdaderas viguerías con los datos devueltos por nuestro *Backend*, no debemos convertirnos en talibanes del lenguaje, *JS* es una utilidad imprescindible en el Frontend.
+
+Ejemplo:
+
+```python
+{% raw %}
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="container" class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="metrica in metricas">
+        <td>[[ metrica.nombre ]]</td>
+        <td>[[ metrica.long_tipo ]]</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var v = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#container',
+    data: {
+      metricas: []
+    },
+    mounted: function(){
+      $.get('/metrics/api/v1/metricas/', function(data){
+        v.metricas = data;
+      })}
+  })
+</script>
+{% endblock content %}
+{% endraw %}
+```
+
+<hr>
+
 ## Gestión de permisos
 
 Otro de los temas básicos en una aplicación en producción, la infraestructura es común pero los usuarios no deben percibirlo salvo en el look and feel de la pagina, uno solo debe ver lo que debe ver.
@@ -587,3 +656,5 @@ Otro de los temas básicos en una aplicación en producción, la infraestructura
 [template-extends]: https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatetag-extends "Template extends"
 [python-inheritance]: https://docs.python.org/3.6/tutorial/classes.html#inheritance "Python Inheritance"
 [template-language]: https://docs.djangoproject.com/en/dev/ref/templates/language/ "The Django template language"
+[bootstrap-wiki]: https://es.wikipedia.org/wiki/Bootstrap_(framework) "Bootstrap Wikipedia"
+[js-mozilla]: https://developer.mozilla.org/es/docs/Web/JavaScript "Javascript Mozilla Tutorial"
