@@ -46,6 +46,12 @@ Ramas:
 
 3. [DRF][repo-drf]. Diseñando nuestro *Backend*.
 
+4. [Permisos][repo-permissions]. *Quién* y *donde* puede acceder.
+
+5. [Frontend][repo-frontend]. Modernizando nuestra *web*.
+
+6. [Tricks][repo-tricks]. Pequeños *trucos* para mejorar nuestro proyecto.
+
 <hr>
 
 Es necesario **aplicarlas en orden**, desde la `01` a la `x`, para observar cómo va creciendo y transformandose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
@@ -727,6 +733,9 @@ En el [*repo*][repo-master] podéis encontrar un ejemplo práctico de como combi
 [repo-auth]: https://github.com/klashxx/PyConES2017/tree/01_auth "Django vs Sysadmin - 01_auth"
 [repo-apps]: https://github.com/klashxx/PyConES2017/tree/02_apps "Django vs Sysadmin - 02_apps"
 [repo-drf]: https://github.com/klashxx/PyConES2017/tree/03_drf "Django vs Sysadmin - 03_drf"
+[repo-permissions]: https://github.com/klashxx/PyConES2017/tree/04_permissions "Django vs Sysadmin - 04_permissions"
+[repo-frontend]: https://github.com/klashxx/PyConES2017/tree/05_frontend "Django vs Sysadmin - 05_frontend"
+[repo-tricks]: https://github.com/klashxx/PyConES2017/tree/06_tricks "Django vs Sysadmin - 06_tricks"
 [wiki-orm]: https://es.wikipedia.org/wiki/Mapeo_objeto-relacional "ORM - Wikipedia"
 [drf-home]: http://www.django-rest-framework.org/ "Django REST framework"
 [admin-site]: https://docs.djangoproject.com/en/dec/ref/contrib/admin/ "Admin Site"
