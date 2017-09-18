@@ -318,7 +318,7 @@ Igualmente me permite trabajar independientemente en cualquier otra aplicación 
 
 Es uno de mis mecanismos favoritos del Framework y se basa en expresiones regulares.
 
-Cuando llamamos a una url, Django en primer lugar cargar el urls.py de la raíz del proyecto y a partir de ahí tratara de resolverla.
+Cuando llamamos a una url, Django en primer lugar carga el urls.py de la raíz del proyecto y a partir de ahí tratara de resolverla.
 
 ```python
 urlpatterns = [
@@ -332,7 +332,7 @@ urlpatterns = [
 
 #### ¿Que pasa si introducimos nuestro dominio a secas?
 
-Django recorrerá las cinco regex que tenemos parametrizadas, determinara que la que única que cumple el patrón  es la primera, donde le indicamos que cargue las *urls* de la aplicación *core*:
+Django recorrerá las cinco regex que tenemos parametrizadas, determinará que la única que cumple el *patrón* es la primera, donde le indicamos que cargue las *urls* de la aplicación *core*:
 
 ```python
 urlpatterns = [
