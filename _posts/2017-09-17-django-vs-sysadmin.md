@@ -54,7 +54,7 @@ Ramas:
 
 <hr>
 
-Es necesario **aplicarlas en orden**, desde la `01` a la `x`, para observar cómo va creciendo y transformandose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
+Es necesario **aplicarlas en orden**, desde la `01` a la `x`, para observar cómo va creciendo y transformándose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
 
 Finalmente podremos hacer `checkout` al *master* que contiene el código de la demo completa.
 
@@ -66,7 +66,7 @@ Finalmente podremos hacer `checkout` al *master* que contiene el código de la d
 
 Me llamo Juan Diego, soy Sysadmin y hasta hace cinco meses no sabía que era `HTML` :grimacing:.
 
-Bueno ... quizás esta última afirmación sea un poco exagerada, para ser honesto había usado *templating* (`jinja2`) para generar mails *bonitos* y experimentado minimamente con `Flask`.
+Bueno ... quizás esta última afirmación sea un poco exagerada, para ser honesto había usado *templating* (`jinja2`) para generar mails *bonitos* y experimentado mínimamente con `Flask`.
 
 #### ¿Cómo me metí en este *embolao*?
 
@@ -94,7 +94,7 @@ La respuesta es obvia :grin: y la selección natural:
 
 - `models.py`: Mi portal debía hacer uso de **modelos** (¿?) **con persistencia** en BBDD y Django como [ORM][wiki-orm] es una pasada.
 
-- **Extensible**: ¿os habéis dado cuenta que hablo de *portal*? ... pues este también fue un punto fundamental ya que no solo se me solicito la programción de una aplicación, además se deseaba que el sistema fuera extensible, es decir que se pudieran *acoplar* nuevas *apps* aprovechando una infraestructura común (autenticación, plantillas, etc) …. el famoso *po ya que*.
+- **Extensible**: ¿os habéis dado cuenta que hablo de *portal*? ... pues este también fue un punto fundamental ya que no solo se me solicito la programación de una aplicación, además se deseaba que el sistema fuera extensible, es decir que se pudieran *acoplar* nuevas *apps* aprovechando una infraestructura común (autenticación, plantillas, etc.) …. el famoso *po ya que*.
 
 - [Django Rest Framework][drf-home] (lo comentaremos más adelante).
 
@@ -108,11 +108,11 @@ La respuesta es obvia :grin: y la selección natural:
 
 Caí en la tentación e intenté salir por la *vía rápida*, instale aplicaciones y boilerplate como un loco, mi objetivo era claro intentar encontrar el santo grial, un código que me lo diera todo (o mucho) hecho.
 
-Mi primera idea fué ...¡¿lo mismo me sirve un [CSM][csm-wiki]?!
+Mi primera idea fue ...¡¿lo mismo me sirve un [CSM][csm-wiki]?!
 
 Descubrí [Awesome Django][awesome] *(highly recommended)* y probé casi todos (*Wagtail*, *Django-CMS*, *Mezzanine*) :blush:
 
-En ocasiones, *raras*, conseguí que alguno funcionara :sunglasses:, pero lo que hacía por debajo era *magia negra* para mi :fearful: y eso me imposibilitaba poder adaptar el *CMS* a mis necesidades, el  *zen Django* todavía estaba muy lejos de mi espíritu .
+En ocasiones, *raras*, conseguí que alguno funcionara :sunglasses:, pero lo que hacía por debajo era *magia negra* para mí :fearful: y eso me imposibilitaba poder adaptar el *CMS* a mis necesidades, el  *zen Django* todavía estaba muy lejos de mi espíritu .
 
 Así que paré, reflexioné y decidí **empezar por los basics**: concretamente los tutoriales de [Django Girls][django-girls-tuto] y [Mozilla][mozilla-tuto] que os recomiendo fervientemente (en ese orden).
 
@@ -340,7 +340,7 @@ urlpatterns = [
 ]
 ```
 
-En este caso solo tenemos un patrón contemplado la cadena vacia, que enrutaremos hacia la vista `home` del proyect.
+En este caso solo tenemos un patrón contemplado la cadena vacía, que enrutaremos hacia la vista `home` del proyect.
 
 :bulb: **TIP** :bulb: La idea aquí es ser lo más modular posible, cada app gestionara sus propias *urls* intentando que la del proyecto raíz quede lo más simple y limpia posible.
 
@@ -348,7 +348,7 @@ En este caso solo tenemos un patrón contemplado la cadena vacia, que enrutaremo
 
 ## Modelos y vistas ...¿Dónde está el controlador?
 
-Para comprender Django es fundamental entender como funciona su [MVC][django-mvc]:
+Para comprender Django es fundamental entender cómo funciona su [MVC][django-mvc]:
 
 > Django parece ser un framework MVC, pero ustedes llaman al Controlador «vista», y a la Vista «plantilla». ¿Cómo es que no usan los nombres estándares?
 >
@@ -371,13 +371,13 @@ Diseñarlos requiere pensar detenidamente en los datos que se desean representar
 
 Para ahorrarnos curro, podemos tomar como ejemplo el modelo [User][user].
 
-Los modelos además pueden relacionarse entre si, mediante campos / variables comunes (por ejemplo mediante [ForeignKey][foreignkey]).
+Los modelos además pueden relacionarse entre sí, mediante campos / variables comunes (por ejemplo mediante [ForeignKey][foreignkey]).
 
-No necesitamos sql, ya que nos proporcionan una API query pythonica
+No necesitamos *SQL*, ya que nos proporcionan una *API* query *pythonica*.
 
-:bulb: **TIP** :bulb: Por defecto Django crea las tablas mediante las migrations, pero podemos establecer que el modelo no sea manejado y de esa forma podremos incorporar una tabla preexistente al ecosistema, es una buena forma de integrar datos provenientes de aplicaciones externas, y se nos proporcionan utilidades para inspeccionar el modelo.
+:bulb: **TIP** :bulb: Por defecto *Django* crea las tablas mediante las *migrations*, pero podemos establecer que el modelo no sea manejado y de esa forma podremos incorporar una tabla preexistente al ecosistema, es una buena forma de integrar datos provenientes de aplicaciones externas, y se nos proporcionan utilidades para inspeccionar el modelo.
 
-:bulb: **TIP** :bulb: Campo único, django se lleva mal con los modelos formados por pks en multiples campos.
+:bulb: **TIP** :bulb: Campo único, *Django* se lleva mal con los modelos formados por *pks* en múltiples campos.
 
 Las vistas, por norma general, se ocupan de representar ciertos datos provenientes de nuestros modelos.
 
@@ -390,7 +390,7 @@ class Home(View):
                       context={'metricas': metricas})
 ```
 
-:bulb: **TIP** :bulb: Usar Class Based Views … pueden parecer mas complicadas pero a largo plazo compensa su aprendizaje por la potencia que ofrecen
+:bulb: **TIP** :bulb: Usar *Class Based Views* … pueden parecer más complicadas pero a largo plazo compensa su aprendizaje por la potencia que ofrecen
 
 Y finalmente el template devuelve el `html`.
 
@@ -414,7 +414,7 @@ Y finalmente el template devuelve el `html`.
 
 ## Autenticación y registro
 
-En la estructura del proyecto ya hemos adelantado que lo ideal es mantener la funcionalidad común fuera del scope de las aplicaciones aislables, por lo que la primera de medida debe ser sacar la gestión de usuarios, en el ejemplo que estamos tratando se situa incluso en diferente nivel.
+En la estructura del proyecto ya hemos adelantado que lo ideal es mantener la funcionalidad común fuera del scope de las aplicaciones aislables, por lo que la primera de medida debe ser sacar la gestión de usuarios, en el ejemplo que estamos tratando se sitúa incluso en diferente nivel.
 
 :bulb: **TIP** :bulb: **fundamental** es *SIEMPRE* heredar del [Abstractuser][abstractuser], nos permitirá olvidarnos del modelo `Profile`. Esto debe hacerse siempre en la creación del proyecto ya que la migración de el modelo de `User` es muy complicada.
 
@@ -448,7 +448,7 @@ La tecnología *trending* es [GraphQL][graphql] y sin duda es el futuro, pero [D
 
 Los *templates* son base del Frontend y la tercera pata del [*MVT*][django-mvc], es donde vamos a escribir nuestro `HTML` (`JS` y demás).
 
-Es un sistema diseñado de forma muy inteligente, teniendo en cuenta que Django no esta enfocado a la construcción de [*single-page applications*][spa-wiki].
+Es un sistema diseñado de forma muy inteligente, teniendo en cuenta que Django no está enfocado a la construcción de [*single-page applications*][spa-wiki].
 
 Cada *app* tendrá sus propios *templates* encargados de renderizar los datos proporcionados por la vista que invoca o extraídos directamente desde la `API` (si la hemos usado claro).
 
@@ -488,7 +488,7 @@ Para el neófito es vital entender tres conceptos:
 3. Lenguaje
 2. Custom *Tags* y *Filtros*
 
-La **herencia** nos permite extender (y modificar) la plantilla base que contendrá los elementos básicos y el look and feel de nuestra web, facilitándonos enormemente la tarea de construir una nueva pagina ya que los elementos comunes ya nos vienen dados ([*DRY*][dry-wiki]).
+La **herencia** nos permite extender (y modificar) la plantilla base que contendrá los elementos básicos y el look and feel de nuestra web, facilitándonos enormemente la tarea de construir una nueva página ya que los elementos comunes ya nos vienen dados ([*DRY*][dry-wiki]).
 
 Podríamos verlo, construyendo un paralelismo, como la [*herencia*][python-inheritance] de de una *clase* Python, podemos heredar todo el código de la clase base, pero también podemos ampliarlo y modificarlo
 
@@ -543,20 +543,20 @@ Y el `template` que lo *renderiza*:
 
 ## Mi web no es *cool* o tercer error
 
-Andaba yo muy contento con los resultados del trabajo hasta la primera reunión de seguimiento con los usuarios donde la primera pregunta fué, … **¿y esto cómo se ve en el móvil?**
+Andaba yo muy contento con los resultados del trabajo hasta la primera reunión de seguimiento con los usuarios donde la primera pregunta fue, … **¿y esto cómo se ve en el móvil?**
 
 *¿OLA K ASE?*
 
-No se me había pasado por la cabeza esa posibildad: **se veía mal, muy mal**.
+No se me había pasado por la cabeza esa posibilidad: **se veía mal, muy mal**.
 
-La cruda (o no) realidad es esta: *Si deseas que tu web tenga un interfaz de usuario moderno tendrás que ir mas allá de Python y un HTML básico*.
+La cruda (o no) realidad es esta: *Si deseas que tu web tenga un interfaz de usuario moderno tendrás que ir más allá de Python y un HTML básico*.
 
 Yo me he apoyado fundamentalmente en estos dos elementos:
 
 - Bootstrap
 - Javascript
 
-[**Bootstrap**][bootstrap-wiki] es un *framework* web basado principalmente en HTML y CSS que mejora (o hace más vistosos) los elementos que incluimos en nuestros *templates*, además permite que nuestras paginas sean responsive sin demasiada dificultad (Sistema en grid)
+[**Bootstrap**][bootstrap-wiki] es un *framework* web basado principalmente en HTML y CSS que mejora (o hace más vistosos) los elementos que incluimos en nuestros *templates*, además permite que nuestras páginas sean responsive sin demasiada dificultad (Sistema en grid)
 
 [**Javascript**][js-mozilla] es un lenguaje que tiene la gran ventaja de poder ejecutarse en el navegador. Existen innumerables librerías `.js` muchas de ellas *super cool*, que nos permiten hacer verdaderas viguerías con los datos devueltos por nuestro *Backend*, no debemos convertirnos en talibanes del lenguaje, *JS* es una utilidad imprescindible en el Frontend.
 
@@ -687,7 +687,7 @@ class MetricasViewSet(viewsets.ModelViewSet):
 
 El `manage.py` está muy bien para desarrollar, pero los tráficos serios deben ser atendidos desde un **servidor web** propiamente dicho, mi opción predilecta para producción es NGINX.
 
-[*NGINX*][nginx] se encargará de se servir el *contenido estático* y mediante un *proxyserver* redireccionará las peticiones de contenido dinámico a la `url` levantada por el servidor [*WSGI*][wsgi-wiki].
+[*NGINX*][nginx] se encargará de servir el *contenido estático* y mediante un *proxyserver* redireccionará las peticiones de contenido dinámico a la `url` levantada por el servidor [*WSGI*][wsgi-wiki].
 
 ```
 server {
@@ -716,7 +716,7 @@ Necesitamos por supuesto un servidor [*Python*][django-wsgi] que será el que mu
 CMD ["gunicorn", "sysgate.wsgi", "--log-level=debug", "-w 2", "-b 0.0.0.0:8000"]
 ```
 
-En el [*repo*][repo-master] podéis encontrar un ejemplo práctico de como combinar estos elementos y asociarlos a otra tecnología puntera de despliegue: [*Docker*][docker-install].
+En el [*repo*][repo-master] podéis encontrar un ejemplo práctico de cómo combinar estos elementos y asociarlos a otra tecnología puntera de despliegue: [*Docker*][docker-install].
 
 <hr>
 
