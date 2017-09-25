@@ -54,7 +54,7 @@ Ramas:
 
 <hr>
 
-Es necesario **aplicarlas en orden**, desde la `01` a la `x`, para observar cómo va creciendo y transformándose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
+Es necesario **aplicarlas en orden**, desde la `01` a la `06`, para observar cómo va creciendo y transformándose la aplicación mediante cambios incrementales, conservando las modificaciones previas en `BD`.
 
 Finalmente podremos hacer `checkout` al *master* que contiene el código de la demo completa.
 
