@@ -12,7 +12,7 @@ comments: true
 >
 > Solo una gran magia podría satisfacer tan alta causa: Python.
 
-Texto base sobre el que versó la charla [Djando vs Sysadmin][dvs-agenda] impartida en Cáceres durante la [PyConES 2017][pycones2017-home].
+Texto base sobre el que versó la charla [Django vs Sysadmin][dvs-agenda] impartida en Cáceres durante la [PyConES 2017][pycones2017-home].
 
 Podéis acceder a las *slides* [aquí][dvs-slides].
 
