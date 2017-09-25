@@ -8,11 +8,11 @@ comments: true
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Prefacio
-> Relataremos la historia de un brujo Sysdadmin que vivía en el Reino del lejano Backend, triste y enclaustrado entre terminales, conjurando hechizos en Perl y awk, hasta que un buen día (¿o malo quizás?) se le encomendó la noble misión de pregonar en los Siete Reinos HTML los datos que emanaban de las mazmorras SQL.
+> Historia de un brujo Sysdadmin que vivía en el Reino del lejano Backend, triste y enclaustrado entre terminales, conjurando hechizos en Perl y awk, hasta que un buen día (¿o malo quizás?) se le encomendó la noble misión de pregonar en los Siete Reinos HTML los datos que emanaban de las mazmorras SQL.
 >
 > Solo una gran magia podría satisfacer tan alta causa: Python.
 
-Texto base sobre el que versará la charla [Djando vs Sysadmin][dvs-agenda] a impartir en Cáceres durante la [PyConES 2017][pycones2017-home].
+Texto base sobre el que versó la charla [Djando vs Sysadmin][dvs-agenda] impartida en Cáceres durante la [PyConES 2017][pycones2017-home].
 
 Podéis acceder a las *slides* [aquí][dvs-slides].
 
