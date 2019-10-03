@@ -10,3 +10,7 @@
 - title: Django vs Sysadmin
   slides: True
   id: django
+
+- title: F-strings: A format system to rule them all
+  slides: True
+  id: django
