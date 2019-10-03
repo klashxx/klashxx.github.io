@@ -8,6 +8,8 @@ title: Talks
     <div class="talk grid-3__item">
         {% if slide.slides %}
           <a class="no-underline" href="{{ site.baseurl }}/slides/{{ slide.id }}">
+        {% elsif slide.external_link %}
+          <a class="no-underline" href="{{ slide.external_link }}">
         {% elsif slide.video %}
           <a class="no-underline" href="{{ slide.video }}">
         {% else %}
@@ -16,9 +18,10 @@ title: Talks
         <img src="{{ site.baseurl }}/images/{{ slide.id }}.png" alt="{{ slide.title }}" style="padding:1px;border:thin solid black;"/>
         </a>
 
-        {% if slide.video and slide.slides %}
+        {% if slide.video and slide.slides or slide.external_link %}
         <p class="no-margin"><a class="talk__video" href="{{ slide.video }}">Watch video</a></p>
         {% endif %}
+
 
         {% if slide.pdf %}
         <p><a class="talk__pdf no-margin" href="{{ site.baseurl }}/slides/pdf/{{ slide.id }}.pdf">Download PDF</a></p>
@@ -26,5 +29,4 @@ title: Talks
         <br>
     </div>
     {% endfor %}
-</div>
 </div>
