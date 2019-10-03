@@ -1,3 +1,8 @@
+- title: "F-strings: A format system to rule them all"
+  slides: False
+  id: fstrings_pycones2019
+  external_link: https://mybinder.org/v2/gh/klashxx/fstrings-binder/master?filepath=fstrings.ipynb
+
 - title: Python o como mejorar la vida de un administrador de sistemas
   slides: False
   id: python-sysadmin
@@ -8,9 +13,5 @@
   id: awk
 
 - title: Django vs Sysadmin
-  slides: True
-  id: django
-
-- title: "F-strings: A format system to rule them all"
   slides: True
   id: django
