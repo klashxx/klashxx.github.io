@@ -10,7 +10,8 @@ You can reach me on:
 - [LinkedIn](https://linkedin.com/in/juandiegogodoy)
 - [Twitter](http://twitter.com/klashxx)
 
-Don't miss my photos on [500px](https://500px.com/juan_diego).
+Don't miss my photos on [500px](https://500px.com/juan_diego) and let's connect on [Strava](https://www.strava.com/athletes/6498146).
+
 
 Thanks for reading!   
 
