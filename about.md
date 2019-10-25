@@ -6,7 +6,7 @@ title: About
 You can reach me on:
 
 - [GitHub](https://github.com/klashxx)
-- [StackOverflow](http://stackoverflow.com/users/1200821/klashxx?tab=profile)
+- [StackOverflow](https://stackoverflow.com/users/1200821/juan-diego-godoy?tab=profile)
 - [LinkedIn](https://linkedin.com/in/juandiegogodoy)
 - [Twitter](http://twitter.com/klashxx)
 
