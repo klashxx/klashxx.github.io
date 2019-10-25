@@ -3,15 +3,15 @@
   id: fstrings_pycones2019
   external_link: https://mybinder.org/v2/gh/klashxx/fstrings-binder/master?filepath=fstrings.ipynb
 
-- title: Python o como mejorar la vida de un administrador de sistemas
-  slides: False
-  id: python-sysadmin
-  video: https://www.youtube.com/watch?v=gFa0gGXPQG4
+- title: Django vs Sysadmin
+  slides: True
+  id: django
 
 - title: AWK empower your comandline
   slides: True
   id: awk
 
-- title: Django vs Sysadmin
-  slides: True
-  id: django
+- title: Python o como mejorar la vida de un administrador de sistemas
+  slides: False
+  id: python-sysadmin
+  video: https://www.youtube.com/watch?v=gFa0gGXPQG4
